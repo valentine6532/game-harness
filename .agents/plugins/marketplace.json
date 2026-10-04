@@ -1,0 +1,20 @@
+{
+  "name": "game-harness",
+  "interface": {
+    "displayName": "Game Harness"
+  },
+  "plugins": [
+    {
+      "name": "game-harness",
+      "source": {
+        "source": "local",
+        "path": "./plugins/game-harness"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

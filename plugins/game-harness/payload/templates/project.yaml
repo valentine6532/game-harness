@@ -1,0 +1,31 @@
+# 이 게임의 하네스 설정. 이 파일은 게임 프로젝트가 주인이며 하네스 업데이트로 바뀌지 않는다.
+# 에이전트가 읽는 설정이다. 모르는 항목은 비워 두고, 알게 되면 채운다.
+
+game:
+  name: ""
+  genre: ""
+  platforms: []          # 예: [android, ios]
+
+engine:
+  name: ""               # 예: unity
+  version: ""
+  project_dir: ""        # 엔진 프로젝트 폴더. 예: client/
+
+paths:
+  work_target: ""        # 사용자가 "게임을 바꿔줘"라고 할 때의 대상 폴더
+  reference_only: []     # 참고용이라 요청 없이는 고치지 않는 폴더
+  data_source: ""        # 손으로 고치는 데이터 원본 위치
+  generated: []          # 원본에서 만들어지므로 직접 고치지 않는 위치
+  docs: "docs/"          # 기획, 아트 방향, 진행 상태 문서
+
+commands:
+  sync_data: ""          # 데이터 원본을 고친 뒤 실행할 명령
+  verify: ""             # 검증 실행 방법
+  verify_docs: ""        # 검증 방법을 설명한 문서
+  verify_summary: ""     # 검증 뒤 먼저 읽을 요약 파일
+
+# 사용자가 명시적으로 요청했을 때만 하는 작업
+requires_explicit_request: []
+# 예:
+#   - 기기용 빌드와 패키징 (APK 등)
+#   - 전체 스테이지 재생 검사

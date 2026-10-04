@@ -1,0 +1,14 @@
+{
+  "name": "game-harness",
+  "description": "공통 게임 제작 하네스",
+  "owner": {
+    "name": "valentine6532"
+  },
+  "plugins": [
+    {
+      "name": "game-harness",
+      "source": "./plugins/game-harness",
+      "description": "게임 하네스 적용, 상태 확인, 업데이트, 복구, 공통 반영"
+    }
+  ]
+}
