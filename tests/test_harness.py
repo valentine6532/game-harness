@@ -25,12 +25,14 @@ class HarnessTest(unittest.TestCase):
         shutil.copytree(PLUGIN, self.plugin, ignore=shutil.ignore_patterns("__pycache__"))
         self.project = self.tmp / "game"
         self.project.mkdir()
-        self._saved = (harness.PLUGIN_ROOT, harness.PAYLOAD)
+        self._saved = (harness.PLUGIN_ROOT, harness.PAYLOAD, harness.published_version)
         harness.PLUGIN_ROOT = self.plugin
         harness.PAYLOAD = self.plugin / "payload"
+        # 시험 중에는 GitHub에 접속하지 않는다.
+        harness.published_version = lambda: None
 
     def tearDown(self):
-        harness.PLUGIN_ROOT, harness.PAYLOAD = self._saved
+        harness.PLUGIN_ROOT, harness.PAYLOAD, harness.published_version = self._saved
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def run_cli(self, *args):
@@ -171,7 +173,8 @@ class HarnessTest(unittest.TestCase):
         manifest = self.manifest()
         self.assertEqual(manifest["harnessVersion"], "0.2.0")
         self.assertEqual(manifest["modules"], ["unity"])
-        self.assertEqual([h["to"] for h in manifest["history"]], ["0.1.0", "0.2.0"])
+        self.assertEqual([h["to"] for h in manifest["history"]][-1], "0.2.0")
+        self.assertEqual(len(manifest["history"]), 2)
         self.assertEqual(json.loads(self.run_cli("diff", "--json")[1])["changed"], [])
 
     def test_local_edits_are_reported_and_overwritten(self):
@@ -212,6 +215,19 @@ class HarnessTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("적용되어 있지 않다", out)
         self.assertIn("unity", out)
+
+    def test_status_reports_newer_published_version(self):
+        self.run_cli("apply")
+        harness.published_version = lambda: "9.9.9"
+        code, out = self.run_cli("status")
+        self.assertEqual(code, 0)
+        self.assertIn("v9.9.9", out)
+        self.assertIn("플러그인을 먼저 갱신", out)
+
+    def test_status_is_quiet_when_published_version_is_not_newer(self):
+        self.run_cli("apply")
+        harness.published_version = lambda: harness.plugin_version()
+        self.assertNotIn("플러그인을 먼저 갱신", self.run_cli("status")[1])
 
     def test_update_before_apply_fails(self):
         code, out = self.run_cli("update", "--yes")

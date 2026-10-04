@@ -85,12 +85,13 @@ def changelog_between(old: str, new: str) -> list[tuple[str, str]]:
 
 # ---------- git ----------
 
-def git(cwd: Path, *args: str) -> str | None:
+def git(cwd: Path, *args: str, timeout: float | None = None) -> str | None:
     try:
         result = subprocess.run(
-            ["git", *args], cwd=cwd, capture_output=True, text=True, encoding="utf-8"
+            ["git", *args], cwd=cwd, capture_output=True, text=True, encoding="utf-8",
+            timeout=timeout,
         )
-    except OSError:
+    except (OSError, subprocess.TimeoutExpired):
         return None
     return result.stdout.strip() if result.returncode == 0 else None
 
@@ -119,11 +120,12 @@ def source_warnings() -> list[str]:
     warnings = []
     if git(PLUGIN_ROOT, "status", "--porcelain", "--", "."):
         warnings.append("원본 저장소의 플러그인 폴더에 커밋되지 않은 변경이 있다.")
-    tags = (git(PLUGIN_ROOT, "tag", "--points-at", "HEAD") or "").split()
-    if f"v{plugin_version()}" not in tags:
-        warnings.append(
-            f"원본 저장소의 현재 커밋에 v{plugin_version()} 태그가 없다. 작업 중인 내용일 수 있다."
-        )
+    tag = f"v{plugin_version()}"
+    changed = git(PLUGIN_ROOT, "diff", "--name-only", tag, "HEAD", "--", ".")
+    if changed is None:
+        warnings.append(f"원본 저장소에 {tag} 태그가 없다. 아직 내보내지 않은 버전이다.")
+    elif changed:
+        warnings.append(f"{tag} 태그를 붙인 뒤 플러그인 내용이 바뀌었다. 버전을 올리지 않은 수정이 섞여 있다.")
     return warnings
 
 
@@ -135,11 +137,14 @@ def project_warnings(project: Path) -> list[str]:
     return []
 
 
-def latest_source_tag() -> str | None:
-    if source_repo() is None:
+def published_version() -> str | None:
+    """GitHub 원본 저장소에 올라온 가장 높은 버전 태그. 확인할 수 없으면 None."""
+    url = read_json(PLUGIN_ROOT / "plugin.json").get("repository")
+    if not url:
         return None
-    tags = (git(PLUGIN_ROOT, "tag", "--list", "v*") or "").split()
-    return max(tags, key=version_key).lstrip("v") if tags else None
+    output = git(PLUGIN_ROOT, "ls-remote", "--tags", "--refs", url, "v*", timeout=15)
+    tags = re.findall(r"refs/tags/v(\d+(?:\.\d+)*)$", output or "", flags=re.M)
+    return max(tags, key=version_key) if tags else None
 
 
 # ---------- 프로젝트 ----------
@@ -347,9 +352,9 @@ def cmd_status(args) -> int:
             print(f"선택 가능한 기능: {', '.join(available_modules()) or '없음'}")
         return 0
     diff = compute_diff(project, manifest, manifest["modules"])
-    latest = latest_source_tag()
+    latest = published_version()
     result = {"applied": True, "modules": manifest["modules"], "appliedAt": manifest["appliedAt"],
-              "latestSourceTag": latest, **diff}
+              "publishedVersion": latest, **diff}
     if args.json:
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
@@ -357,7 +362,8 @@ def cmd_status(args) -> int:
     print(f"적용 시각: {manifest['appliedAt']}")
     print_diff(diff)
     if latest and version_key(latest) > version_key(plugin_version()):
-        print(f"\n원본 저장소의 최신 태그는 v{latest}이다. 플러그인을 먼저 갱신해야 받을 수 있다.")
+        print(f"\nGitHub에 새 버전 v{latest}이 올라와 있다. 설치된 플러그인은 {plugin_version()}이다.")
+        print("플러그인을 먼저 갱신해야 이 프로젝트에 적용할 수 있다.")
     return 0
 
 

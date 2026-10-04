@@ -1,6 +1,6 @@
 {
   "name": "game-harness",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "공통 게임 제작 하네스를 게임 프로젝트에 적용하고, 상태 확인·업데이트·복구·공통 반영을 관리한다.",
   "author": {
     "name": "valentine6532"
