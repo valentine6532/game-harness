@@ -53,6 +53,7 @@ python "<도구 경로>" apply --project . --modules unity
 - `.game-harness/harness/`에 내용물 복사
 - `.game-harness/manifest.json` 기록
 - `.game-harness/project.yaml`, `.game-harness/overrides/README.md` 생성(없을 때만)
+- `.game-harness/work/`(작업 인계 기록 폴더) 생성(없을 때만)
 - `AGENTS.md`에 하네스 구역 추가. 기존 내용은 그대로 두고 맨 아래에 덧붙인다
 - `CLAUDE.md` 생성(없을 때만)
 
@@ -69,7 +70,7 @@ python "<도구 경로>" apply --project . --modules unity
 - 적용한 버전과 기능
 - 새로 만든 파일
 - `project.yaml`에서 채운 항목과 비워 둔 항목
-- 기존 `AGENTS.md`의 규칙 중 공통 절차와 겹치거나 충돌해 보이는 것. 정리는 사용자가 정할 일이므로 목록만 알린다.
+- 기존 `AGENTS.md`의 규칙 중 공통 절차와 겹치거나 충돌해 보이는 것. 정리는 사용자가 정할 일이므로 목록만 알린다. 프로젝트에 이미 작업 로그 규칙(예: 날짜별 로그 파일)이 있으면 `.game-harness/work/`와 역할이 겹치므로 반드시 알린다.
 
 커밋은 사용자가 요청했을 때 한다.
 

@@ -278,6 +278,15 @@ def install(project: Path, modules: list[str], previous: dict | None) -> dict:
         created.append(f"{HARNESS_DIR}/project.yaml")
     if copy_template("overrides-README.md", harness_root / "overrides" / "README.md"):
         created.append(f"{HARNESS_DIR}/overrides/README.md")
+    if copy_template("work-README.md", harness_root / "work" / "README.md"):
+        created.append(f"{HARNESS_DIR}/work/README.md")
+    for name in ("now", "done"):
+        # 빈 폴더는 git에 올라가지 않으므로 자리를 지키는 파일을 둔다.
+        keep = harness_root / "work" / name / ".gitkeep"
+        if not keep.parent.exists():
+            keep.parent.mkdir(parents=True)
+            keep.touch()
+            created.append(f"{HARNESS_DIR}/work/{name}/")
     if copy_template("CLAUDE.md", project / "CLAUDE.md"):
         created.append("CLAUDE.md")
     agents = write_agents_block(project, modules)
@@ -423,7 +432,8 @@ def cmd_check(args) -> int:
         top = sections[0][0] if sections else "없음"
         problems.append(f"CHANGELOG.md의 최신 항목({top})이 버전({version})과 다르다.")
     for required in ("core", "templates/AGENTS.block.md", "templates/CLAUDE.md",
-                     "templates/project.yaml", "templates/overrides-README.md"):
+                     "templates/project.yaml", "templates/overrides-README.md",
+                     "templates/work-README.md"):
         if not (PAYLOAD / required).exists():
             problems.append(f"payload/{required}가 없다.")
     if problems:

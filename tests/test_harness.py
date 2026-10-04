@@ -74,6 +74,11 @@ class HarnessTest(unittest.TestCase):
         self.assertTrue((root / "harness" / "CHANGELOG.md").is_file())
         self.assertTrue((root / "project.yaml").is_file())
         self.assertTrue((root / "overrides" / "README.md").is_file())
+        self.assertTrue((root / "harness" / "core" / "handoff.md").is_file())
+        self.assertTrue((root / "work" / "README.md").is_file())
+        self.assertTrue((root / "work" / "now" / ".gitkeep").is_file())
+        self.assertTrue((root / "work" / "done" / ".gitkeep").is_file())
+        self.assertIn(".game-harness/work/now/", (self.project / "AGENTS.md").read_text("utf-8"))
         self.assertEqual((self.project / "CLAUDE.md").read_text("utf-8").strip(), "@AGENTS.md")
         agents = (self.project / "AGENTS.md").read_text("utf-8")
         self.assertIn("game-harness:begin", agents)
@@ -176,6 +181,16 @@ class HarnessTest(unittest.TestCase):
         self.assertEqual([h["to"] for h in manifest["history"]][-1], "0.2.0")
         self.assertEqual(len(manifest["history"]), 2)
         self.assertEqual(json.loads(self.run_cli("diff", "--json")[1])["changed"], [])
+
+    def test_update_keeps_work_records_and_creates_missing_work_folder(self):
+        self.run_cli("apply")
+        work = self.project / ".game-harness" / "work"
+        (work / "now" / "1005-1420-lobby-ui.md").write_text("# 로비\n", "utf-8")
+        shutil.rmtree(work / "done")
+        self.release("0.2.0")
+        self.assertEqual(self.run_cli("update", "--yes")[0], 0)
+        self.assertEqual((work / "now" / "1005-1420-lobby-ui.md").read_text("utf-8"), "# 로비\n")
+        self.assertTrue((work / "done" / ".gitkeep").is_file())
 
     def test_local_edits_are_reported_and_overwritten(self):
         self.run_cli("apply")

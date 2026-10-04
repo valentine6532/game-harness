@@ -47,20 +47,30 @@ Claude Code에서는 `/game-harness:harness-apply`처럼 직접 부를 수도 �
    │  └─ modules/unity/      고른 기능만
    ├─ manifest.json          복사한 버전, 고른 기능, 파일별 해시
    ├─ project.yaml           이 게임의 설정
-   └─ overrides/             이 게임만의 예외와 추가 검증
+   ├─ overrides/             이 게임만의 예외와 추가 검증
+   └─ work/                  작업 인계 기록
+      ├─ now/                아직 끝나지 않은 작업. 작업 하나에 파일 하나
+      └─ done/<연-월>/       끝난 작업의 보관함
 ```
 
 | 위치 | 주인 | 업데이트할 때 |
 | --- | --- | --- |
 | `harness/`, `manifest.json`, `AGENTS.md`의 하네스 구역 | 하네스 | 통째로 바뀐다 |
-| `project.yaml`, `overrides/`, `AGENTS.md`의 나머지, `CLAUDE.md` | 게임 | 바뀌지 않는다 |
+| `project.yaml`, `overrides/`, `work/`, `AGENTS.md`의 나머지, `CLAUDE.md` | 게임 | 바뀌지 않는다 |
 
 게임마다 다른 점은 `project.yaml`과 `overrides/`에 적는다. `harness/` 안을 직접 고치면 다음 업데이트 때 덮어써진다.
+
+## 여러 세션에서 동시에 작업하기
+
+세션들은 서로의 대화를 보지 못한다. 대신 각 세션이 작업을 시작할 때 `.game-harness/work/now/`에 파일 하나를 만들어 무엇을 하는지, 어디를 건드리는지 적는다. 다른 세션은 작업 전에 이 폴더를 모두 읽고, 자신이 하려는 일과 겹치면 진행하지 않고 사용자에게 묻는다.
+
+파일은 작업마다 따로라서 여러 세션이 한 파일을 함께 고치는 일이 없다. 끝난 작업의 파일은 `work/done/<연-월>/`로 옮겨진다. 이 폴더를 커밋해 두면 다른 PC나 다른 도구에서도 이어받을 수 있다.
 
 ## 들어 있는 내용
 
 | 위치 | 내용 |
 | --- | --- |
+| `core/handoff.md` | 작업 인계 기록. 시작 전 `work/now/`를 읽고, 다른 세션과 겹치는지 판단하고, 자신의 작업 파일을 남긴다 |
 | `core/workflow.md` | 계획·실행·검증·보고 순서, 원본과 생성 파일 구분, 요청 없이는 하지 않는 작업 |
 | `core/verification.md` | 필요한 범위만 검증, 요약부터 읽기, 자동 검사와 눈으로 본 검토를 따로 보고 |
 | `core/cleanup.md` | 시험 뒤 임시 파일 정리 |
