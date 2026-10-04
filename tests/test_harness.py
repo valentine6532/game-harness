@@ -76,6 +76,8 @@ class HarnessTest(unittest.TestCase):
         self.assertTrue((root / "overrides" / "README.md").is_file())
         self.assertTrue((root / "harness" / "core" / "handoff.md").is_file())
         self.assertTrue((root / "work" / "README.md").is_file())
+        self.assertIn(".local/", (root / "work" / ".gitignore").read_text("utf-8"))
+        self.assertTrue((root / "harness" / "core" / "tools" / "with_lock.py").is_file())
         self.assertTrue((root / "work" / "now" / ".gitkeep").is_file())
         self.assertTrue((root / "work" / "done" / ".gitkeep").is_file())
         self.assertIn(".game-harness/work/now/", (self.project / "AGENTS.md").read_text("utf-8"))

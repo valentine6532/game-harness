@@ -7,5 +7,10 @@
     "name": "valentine6532"
   },
   "repository": "https://github.com/valentine6532/game-harness",
-  "keywords": ["game", "harness", "unity"]
+  "keywords": ["game", "harness", "unity"],
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/codex.json"
+    }
+  }
 }

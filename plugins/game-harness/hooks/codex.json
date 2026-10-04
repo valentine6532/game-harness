@@ -1,0 +1,29 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^apply_patch$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import os,runpy;runpy.run_path(os.environ['PLUGIN_ROOT']+'/scripts/work_guard.py',run_name='__main__')\"",
+            "commandWindows": "python -c \"import os,runpy;runpy.run_path(os.environ['PLUGIN_ROOT']+'/scripts/work_guard.py',run_name='__main__')\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import os,runpy;runpy.run_path(os.environ['PLUGIN_ROOT']+'/scripts/work_guard.py',run_name='__main__')\"",
+            "commandWindows": "python -c \"import os,runpy;runpy.run_path(os.environ['PLUGIN_ROOT']+'/scripts/work_guard.py',run_name='__main__')\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

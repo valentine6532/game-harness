@@ -6,5 +6,6 @@
     "name": "valentine6532"
   },
   "repository": "https://github.com/valentine6532/game-harness",
+  "hooks": "./hooks/claude.json",
   "keywords": ["game", "harness", "unity"]
 }
