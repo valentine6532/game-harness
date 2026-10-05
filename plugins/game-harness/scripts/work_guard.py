@@ -4,7 +4,6 @@
 막는 경우:
 - 자신의 작업 파일 없이 프로젝트 파일을 고치려 할 때
 - 다른 작업이 잡고 있는 곳을 고치려 할 때
-- 자신의 작업 파일 `건드리는 곳`에 적지 않은 곳을 고치려 할 때
 - 다른 세션이 진행 중인 작업 파일을 고치려 할 때
 - 다른 작업과 겹치는 `건드리는 곳`을 적으려 할 때
 
@@ -207,12 +206,6 @@ def check_project_file(root: Path, path: Path, session: str, works: list[Work]) 
                     "사용자에게 알리고, 기다릴지, 겹치지 않는 부분만 할지, 그래도 진행할지 묻는다. "
                     f"사용자가 진행하라고 하면 자신의 작업 파일에 `- 겹침 허용: {other.id}` 줄을 넣는다. {HOW}"
                 )
-    if not any(under(rel, claim) for w in mine for claim in w.claims):
-        declared = ", ".join(c for w in mine for c in w.claims_raw) or "없음"
-        raise Deny(
-            f"{shown}은 자신의 작업 파일 `건드리는 곳`({declared})에 적혀 있지 않다. "
-            f"먼저 자신의 작업 파일({', '.join(w.id for w in mine)})의 `건드리는 곳`에 이 경로나 상위 폴더를 추가한 뒤 다시 시도한다."
-        )
 
 
 def check(data: dict) -> None:

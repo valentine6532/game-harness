@@ -71,12 +71,15 @@ class GuardTest(unittest.TestCase):
         self.assertEqual(self.edit("A", "data/stages.json")[0], 0)
         self.assertEqual(self.edit("A", "CLIENT\\UI\\lobby\\x.cs")[0], 0)
 
-    def test_edit_outside_own_claim_is_denied(self):
+    def test_edit_outside_own_claim_is_allowed_when_nobody_holds_it(self):
         self.start_work("A", "1005-1420-lobby", "client/UI/Lobby/")
-        code, err = self.edit("A", "client/UI/Shop/Button.prefab")
-        self.assertEqual(code, 2)
-        self.assertIn("적혀 있지 않다", err)
-        self.assertEqual(self.edit("A", "client/UI/LobbyExtra/x.cs")[0], 2)
+        self.assertEqual(self.edit("A", "client/UI/Shop/Button.prefab")[0], 0)
+
+    def test_claim_matches_whole_path_segments_only(self):
+        self.start_work("A", "1005-1420-lobby", "client/UI/Lobby/")
+        self.start_work("B", "1005-1435-data", "data/")
+        self.assertEqual(self.edit("B", "client/UI/LobbyExtra/x.cs")[0], 0)
+        self.assertEqual(self.edit("B", "client/UI/Lobby/x.cs")[0], 2)
 
     def test_edit_inside_other_claim_is_denied(self):
         self.start_work("A", "1005-1420-lobby", "client/UI/Lobby/")
@@ -100,7 +103,7 @@ class GuardTest(unittest.TestCase):
         code, _ = self.start_work("B", "1005-1435-ui", "client/UI/Lobby/", extra="- 겹침 허용: 1005-1420-lobby")
         self.assertEqual(code, 0)
         self.assertEqual(self.edit("B", "client/UI/Lobby/x.cs")[0], 0)
-        self.assertEqual(self.edit("B", "client/UI/Shop/x.cs")[0], 2)
+        self.assertEqual(self.edit("B", "client/UI/Shop/x.cs")[0], 0)
 
     def test_other_sessions_in_progress_work_file_is_protected(self):
         self.start_work("A", "1005-1420-lobby", "client/UI/Lobby/")
@@ -146,6 +149,7 @@ class GuardTest(unittest.TestCase):
 
     def test_codex_apply_patch_paths_are_checked(self):
         self.start_work("A", "1005-1420-lobby", "client/UI/Lobby/")
+        self.start_work("B", "1005-1435-shop", "client/UI/Shop/")
         patch = "*** Begin Patch\n*** Update File: client/UI/Lobby/a.cs\n@@\n-a\n+b\n*** End Patch\n"
         self.assertEqual(self.hook("A", "apply_patch", {"command": patch})[0], 0)
         patch = "*** Begin Patch\n*** Add File: client/UI/Shop/b.cs\n+x\n*** End Patch\n"
