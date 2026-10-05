@@ -20,7 +20,9 @@ paths:
 
 commands:
   sync_data: ""          # 데이터 원본을 고친 뒤 실행할 명령
-  verify: ""             # 검증 실행 방법
+  # 검증 실행 방법. 엔진 에디터처럼 한 번에 한 세션만 쓸 수 있는 것을 쓰면 with_lock으로 감싸 적는다.
+  # 예: python .game-harness/harness/core/tools/with_lock.py unity-editor -- python client/Tools/run-verification.py
+  verify: ""
   verify_docs: ""        # 검증 방법을 설명한 문서
   verify_summary: ""     # 검증 뒤 먼저 읽을 요약 파일
 

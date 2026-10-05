@@ -61,6 +61,8 @@ python "<도구 경로>" apply --project . --modules unity
 
 `.game-harness/project.yaml`의 빈 항목을 2단계에서 조사한 내용으로 채운다. 확인하지 못한 항목은 추측으로 채우지 말고 비워 둔다.
 
+검증 명령이 엔진 에디터를 쓰면 `commands.verify`를 `with_lock.py`로 감싼 형태로 적는다. 기존 검증 실행기가 다른 세션의 요청을 기다려 주는지는 코드를 읽어 확인하고, 실패시키거나 확실하지 않으면 감싼다. 문서에 "대기열"이라고 적혀 있다는 것만으로 감싸지 않아도 된다고 판단하지 않는다.
+
 기존 `AGENTS.md`에 "요청 없이는 하지 않는 작업"에 해당하는 규칙(빌드 제한, 전체 검사 제한 등)이 있으면 `requires_explicit_request`에 옮겨 적는다. 기존 `AGENTS.md`의 내용은 지우거나 고쳐 쓰지 않는다.
 
 출력의 "확인할 것"에 `CLAUDE.md`가 `AGENTS.md`를 불러오지 않는다고 나오면, 기존 `CLAUDE.md`에 `@AGENTS.md` 한 줄을 추가할지 사용자에게 묻는다.
