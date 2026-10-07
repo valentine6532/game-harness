@@ -4,6 +4,8 @@
 
 게임 작업은 플러그인이 아니라 게임 폴더에 복사된 하네스를 보고 진행한다. 그래서 플러그인이 새 버전이 되어도, 업데이트를 요청하지 않은 게임은 기존 버전 그대로 동작한다.
 
+같은 저장소에 플러그인이 하나 더 있다. `game-skills`는 직접 만든 제작 스킬을 여러 PC에서 같이 쓰기 위한 묶음이며 하네스와 따로 설치한다. 아래 [제작 스킬 묶음](#제작-스킬-묶음-game-skills)에 적었다.
+
 ## 필요한 것
 
 - Python 3.9 이상 (`python` 명령으로 실행되어야 한다)
@@ -139,6 +141,39 @@ python harness.py source
 
 `update`는 `--yes`가 없으면 차이만 출력하고 아무것도 바꾸지 않는다. `apply`는 이미 적용된 프로젝트에서는 아무것도 바꾸지 않는다.
 
+## 제작 스킬 묶음 (game-skills)
+
+직접 만든 전역 스킬을 담은 플러그인이다. 하네스와 달리 게임 폴더에 복사하지 않고 플러그인에서 바로 쓴다.
+
+```
+claude plugin marketplace add valentine6532/game-harness
+claude plugin install game-skills@game-harness
+```
+
+| 스킬 | 하는 일 |
+| --- | --- |
+| `session` | 프로젝트 진행 상태, 막힘, 다음 할 일을 Git·문서·산출물로 복원 |
+| `game-juice` | 타격감·피드백·연출 점검과 개선 |
+| `game-character-3d` | 설정화부터 Unreal 검증까지 3D 캐릭터·무기 제작 (Tripo, Blender, Unreal) |
+| `2d-character-animation` | 그림 한 장으로 Unity 2D 스켈레탈 애니메이션 제작. 검수 에이전트 `2d-rig-reviewer` 포함 |
+| `store-launch` | App Store·Google Play 출시 준비와 진행 관리 |
+| `respawn-lab-unity-splash` | 회사 로고 인트로 (Unity) |
+| `d2b2-reference` | 디아블로 II 레저렉션 아이템 자료 검색 |
+| `blender-motion-state-inspection` | Blender에서 자세·접지·방향 검사. 직접 만든 것이 아니라 ECC에서 가져온 것이다 |
+
+Claude Code에서는 `/game-skills:session`처럼 플러그인 이름이 앞에 붙는다.
+
+새 PC에서 한 번씩 할 일:
+
+- `skills/game-character-3d/config.env`의 Blender, Tripo, Unreal 경로를 그 PC에 맞게 고친다. `references/setup.md`에 설치 순서가 있다.
+- `python plugins/game-skills/skills/d2b2-reference/scripts/sync.py`를 실행해 아이템 자료를 받는다. 자료(약 23MB)는 저장소에 넣지 않았고 `~/.agents/reference-data/d2b2`에 저장된다.
+- 이 플러그인을 쓰는 PC에는 같은 이름의 스킬을 `~/.claude/skills`에 따로 두지 않는다. 두면 같은 스킬이 두 번 보인다.
+- Codex에서 플러그인 설치가 되지 않으면 스킬 폴더를 직접 연결한다. 스킬마다 `~/.agents/skills/<이름>`을 저장소의 `plugins/game-skills/skills/<이름>`으로 향하는 정션으로 만든다.
+
+직접 만들지 않은 전역 스킬(Unity·Firebase·Unreal 공식 스킬 등)은 담지 않았다. 어디서 어느 버전을 받았는지는 `vendor-skills/README.md`에 있다.
+
+스킬을 고칠 때는 `plugins/game-skills/skills/` 안을 고치고 `plugin.json`과 `.claude-plugin/plugin.json`의 버전을 함께 올린다. `skills/2d-character-animation/reviewer/2d-rig-reviewer.md`를 고치면 `agents/2d-rig-reviewer.md`에도 똑같이 반영한다. 시험이 두 파일이 같은지 확인한다.
+
 ## 저장소 구조
 
 ```text
@@ -157,7 +192,13 @@ game-harness/
 │     ├─ core/
 │     ├─ modules/
 │     └─ templates/
-└─ tests/test_harness.py
+├─ plugins/game-skills/
+│  ├─ .claude-plugin/plugin.json      Claude Code용 설정
+│  ├─ plugin.json                     Codex용 설정
+│  ├─ skills/                         제작 스킬 8개
+│  └─ agents/2d-rig-reviewer.md       2D 리그 검수 에이전트 (스킬 안 reviewer/와 같은 파일)
+├─ vendor-skills/                     다시 설치하는 전역 스킬의 출처와 버전 기록
+└─ tests/
 ```
 
 ## 하네스 고치기
@@ -184,5 +225,6 @@ game-harness/
 - Codex에서의 훅 동작 (`hooks/codex.json`은 문서 기준으로 작성했다. Claude Code에서는 실제 세션으로 확인했다)
 - 세션을 다시 열어 이어갈 때(resume)와 서브에이전트가 파일을 고칠 때 훅이 같은 세션으로 인식하는지
 - GitHub 저장소를 통한 Claude Code 설치
+- `game-skills` 플러그인을 설치한 실제 세션에서 스킬과 `2d-rig-reviewer` 에이전트를 써 보는 것 (플러그인을 폴더에서 불러와 스킬 8개와 에이전트 1개가 인식되는 것까지만 확인했다)
 - Windows 외의 환경
 - 내용물이 Unity 퍼즐 게임 하나의 경험에서 나왔으므로, 다른 종류의 게임에서도 맞는지

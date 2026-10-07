@@ -1,0 +1,150 @@
+{
+  "version": 3,
+  "skills": {
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-09-10T17:29:04.673Z",
+      "updatedAt": "2026-09-10T17:29:04.673Z"
+    },
+    "firebase-ai-logic-basics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-ai-logic-basics/SKILL.md",
+      "skillFolderHash": "de9ed09d632cc1e3ef74f5e9b07f067fa534cfae",
+      "installedAt": "2026-09-20T10:11:17.541Z",
+      "updatedAt": "2026-09-20T10:11:17.541Z"
+    },
+    "firebase-app-hosting-basics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-app-hosting-basics/SKILL.md",
+      "skillFolderHash": "d7a75aba4bc9330bd8a1fc1140467eecdcd98636",
+      "installedAt": "2026-09-20T10:11:17.545Z",
+      "updatedAt": "2026-09-20T10:11:17.545Z"
+    },
+    "firebase-auth-basics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-auth-basics/SKILL.md",
+      "skillFolderHash": "236dc4571914b63bcc0ab4f4246f12d5ed83b494",
+      "installedAt": "2026-09-20T10:11:17.547Z",
+      "updatedAt": "2026-09-20T10:11:17.547Z"
+    },
+    "firebase-basics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-basics/SKILL.md",
+      "skillFolderHash": "333f0c2dad8f6b26d769e17ca88c2a4af6ee2202",
+      "installedAt": "2026-09-20T10:11:17.550Z",
+      "updatedAt": "2026-09-20T10:11:17.550Z"
+    },
+    "firebase-crashlytics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-crashlytics/SKILL.md",
+      "skillFolderHash": "ed0b1944c3431225c3455d7369ea0b303b22b1dd",
+      "installedAt": "2026-09-20T10:11:17.552Z",
+      "updatedAt": "2026-09-20T10:11:17.552Z"
+    },
+    "firebase-data-connect": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-data-connect-basics/SKILL.md",
+      "skillFolderHash": "d6fc2f5e4f6f85216dc7dddcd33a943091e64a67",
+      "installedAt": "2026-09-20T10:11:17.555Z",
+      "updatedAt": "2026-09-20T10:11:17.555Z"
+    },
+    "firebase-firestore": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-firestore/SKILL.md",
+      "skillFolderHash": "55b36a39e00469b516846de5d38eb5911f38af27",
+      "installedAt": "2026-09-20T10:11:17.558Z",
+      "updatedAt": "2026-09-20T10:11:17.558Z"
+    },
+    "firebase-hosting-basics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-hosting-basics/SKILL.md",
+      "skillFolderHash": "782daac3a406a43702380a8f14a25c1fd69a139d",
+      "installedAt": "2026-09-20T10:11:17.561Z",
+      "updatedAt": "2026-09-20T10:11:17.561Z"
+    },
+    "firebase-remote-config-basics": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-remote-config-basics/SKILL.md",
+      "skillFolderHash": "87d09c57333597c632a320f4c4e583bd708501ae",
+      "installedAt": "2026-09-20T10:11:17.563Z",
+      "updatedAt": "2026-09-20T10:11:17.563Z"
+    },
+    "firebase-security-rules-auditor": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firebase-security-rules-auditor/SKILL.md",
+      "skillFolderHash": "eba78c5ff0eaad6ee63b16d429f077f81c2108bd",
+      "installedAt": "2026-09-20T10:11:17.566Z",
+      "updatedAt": "2026-09-20T10:11:17.566Z"
+    },
+    "firestore-rules-creation": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/firestore-rules-creation/SKILL.md",
+      "skillFolderHash": "28f603464549e067ac70d6c846998a749524831b",
+      "installedAt": "2026-09-20T10:11:17.568Z",
+      "updatedAt": "2026-09-20T10:11:17.568Z"
+    },
+    "xcode-project-setup": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/xcode-project-setup/SKILL.md",
+      "skillFolderHash": "cd44665a7b87a9dbe445e07e04901532c4cc3a75",
+      "installedAt": "2026-09-20T10:11:17.571Z",
+      "updatedAt": "2026-09-20T10:11:17.571Z"
+    },
+    "extension-to-functions-codebase": {
+      "source": "firebase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/firebase/agent-skills.git",
+      "skillPath": "skills/extension-to-functions-codebase/SKILL.md",
+      "skillFolderHash": "b99ea33ea59016fc75071002924e4862b95c9166",
+      "installedAt": "2026-09-20T10:11:17.574Z",
+      "updatedAt": "2026-09-20T10:11:17.574Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "antigravity-cli",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-code-cli",
+    "opencode",
+    "warp",
+    "zed",
+    "claude-code"
+  ]
+}

@@ -1,0 +1,116 @@
+{
+ "tail": {
+  "part": "legs",
+  "x_below": -0.07,
+  "z_below": 0.5
+ },
+ "body_pts": "D:/HarnessPrograming/diablo/workspace/deathknight/body/body_pts.npy",
+ "out": "D:/HarnessPrograming/diablo/workspace/deathknight/assembly/final",
+ "name": "Hero",
+ "atlas": 4096,
+ "parts": [
+  {
+   "name": "head",
+   "quad": [
+    0,
+    0
+   ],
+   "init": "top",
+   "region": {
+    "z": [
+     0.845,
+     1.0
+    ]
+   },
+   "glb": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/head_low/tripo-out/decimate-7-d70f60f8/model.glb",
+   "normal_dx": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/head_low/T_normal2k_dx.png"
+  },
+  {
+   "name": "arm_r",
+   "quad": [
+    1,
+    0
+   ],
+   "init": "axis",
+   "region": {
+    "z": [
+     0.42,
+     0.76
+    ],
+    "y": [
+     -1,
+     -0.155
+    ]
+   },
+   "trim": {
+    "above_z": 0.8
+   },
+   "glb": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/arm_low/tripo-out/decimate-8-ac0f5fa5/model.glb",
+   "normal_dx": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/arm_low/T_normal2k_dx.png"
+  },
+  {
+   "name": "arm_l",
+   "quad": [
+    1,
+    0
+   ],
+   "init": "axis",
+   "mirror": true,
+   "share_uv_with": "arm_r",
+   "region": {
+    "z": [
+     0.42,
+     0.76
+    ],
+    "y": [
+     0.155,
+     1
+    ]
+   },
+   "trim": {
+    "above_z": 0.8
+   },
+   "glb": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/arm_low/tripo-out/decimate-8-ac0f5fa5/model.glb"
+  },
+  {
+   "name": "torso",
+   "quad": [
+    0,
+    1
+   ],
+   "init": "top",
+   "region": {
+    "z": [
+     0.58,
+     0.87
+    ],
+    "y": [
+     -0.2,
+     0.2
+    ]
+   },
+   "glb": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/torso_low/tripo-out/decimate-10-7b21f51c/model.glb",
+   "normal_dx": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/torso_low/T_normal2k_dx.png"
+  },
+  {
+   "name": "legs",
+   "quad": [
+    1,
+    1
+   ],
+   "init": "bottom",
+   "region": {
+    "z": [
+     0.0,
+     0.6
+    ],
+    "y": [
+     -0.16,
+     0.16
+    ]
+   },
+   "glb": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/legs_low/tripo-out/decimate-9-2d24f2e2/model.glb",
+   "normal_dx": "D:/HarnessPrograming/diablo/workspace/deathknight/parts/legs_low/T_normal2k_dx.png"
+  }
+ ]
+}

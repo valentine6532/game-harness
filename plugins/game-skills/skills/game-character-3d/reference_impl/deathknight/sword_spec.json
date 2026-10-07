@@ -1,0 +1,19 @@
+[
+ {
+  "name": "HeroSword",
+  "glb": "D:/HarnessPrograming/diablo/workspace/deathknight/sword/retopo/tripo-out/decimate-11-b727720e/model.glb",
+  "straighten": true,
+  "split": [
+   {
+    "name": "Sword",
+    "length": 1.0,
+    "grip": 0.21,
+    "handle": {
+     "from": 0.136,
+     "to": 0.287,
+     "scale": 0.54
+    }
+   }
+  ]
+ }
+]

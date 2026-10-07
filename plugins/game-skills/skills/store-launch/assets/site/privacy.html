@@ -1,0 +1,110 @@
+<!doctype html>
+<!--
+  store-launch 스킬의 방침 틀입니다. 【 】로 표시된 곳을 모두 채우거나 지우세요.
+  이 틀은 AdMob 보상형 광고, Firebase Analytics, 통계를 보내는 결제 라이브러리(Unity IAP),
+  스토어 인앱결제가 들어 있고 계정과 서버가 없는 앱을 기준으로 합니다.
+  앱이 실제로 보내는 것을 조사한 결과에 맞춰 2번과 5번 표의 행을 더하거나 빼세요.
+
+  파일 맨 위의 이 주석에 앱에 따라 달라지는 전제를 적어 둡니다. 예:
+    - 통계 보존 기간: 본문은 "최대 14개월". 콘솔의 실제 설정과 맞출 것.
+    - 결제 라이브러리의 통계 전송을 끄면 Unity 행을 삭제.
+    - Android 광고 ID 권한을 제거하지 않았으면 3번에 그 사실을 적을 것.
+    - 미국에 출시하면 운영자 주소와 전화번호를 추가.
+  언어별 파일: privacy.html (한국어), privacy-en.html (영어), privacy-ja.html (일본어). 세 파일을 함께 고칩니다.
+  법률 전문가 검토를 대신하지 않습니다.
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>【앱 이름】 개인정보 처리방침</title>
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; background: #f7f3e5; color: #2f3a2a; font: 16px/1.7 -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Hiragino Sans", "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 26px; line-height: 1.3; margin: 8px 0 4px; }
+  h2 { font-size: 19px; margin: 36px 0 8px; padding-top: 12px; border-top: 1px solid #d2d9c5; }
+  nav a, nav span { display: inline-block; margin-right: 12px; }
+  nav a { color: #4c6c3e; }
+  nav span { font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { border: 1px solid #d2d9c5; padding: 8px; text-align: left; vertical-align: top; }
+  th { background: #edf1e4; }
+  .scroll { overflow-x: auto; }
+  .meta { color: #6b735f; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+<nav><span>한국어</span><a href="privacy-en" lang="en">English</a><a href="privacy-ja" lang="ja">日本語</a></nav>
+
+<h1>【앱 이름】 개인정보 처리방침</h1>
+<p class="meta">시행일: 【시행일】</p>
+<p>【운영자명】(이하 "운영자")은 【앱 한 줄 설명: 예) 어린이가 사용하는 게임】 "【앱 이름】"(이하 "앱")을 운영하면서 개인정보를 최소한으로 처리합니다. 이 방침은 앱이 어떤 정보를 어떻게 다루는지 보호자께 알려 드리기 위한 것입니다.</p>
+
+<h2>1. 한눈에 보기</h2>
+<ul>
+  <li>회원가입, 로그인, 채팅, 게시 기능이 없습니다.</li>
+  <li>운영자는 이름, 생년월일, 연락처, 사진, 정확한 위치를 수집하지 않으며 자체 서버도 운영하지 않습니다.</li>
+  <li>닉네임과 게임 진행 기록은 기기 안에만 저장되고 운영자나 다른 회사로 전송되지 않습니다.</li>
+  <li>광고, 이용 통계, 결제 기능을 위해 앱에 포함된 Google과 Unity의 도구가 기기 정보를 자동으로 처리합니다. 맞춤형 광고는 사용하지 않습니다.</li>
+</ul>
+
+<h2>2. 처리하는 정보와 목적</h2>
+<div class="scroll"><table>
+  <tr><th>구분</th><th>항목</th><th>목적</th><th>처리하는 곳</th></tr>
+  <tr><td>기기 내 저장</td><td>【기기에 저장하는 항목: 예) 닉네임, 진행 기록, 설정, 구매한 상품과 거래 식별자】</td><td>게임 진행 저장, 구매 혜택 유지</td><td>사용자 기기. 기기의 백업 기능을 켠 경우 Apple 또는 Google의 기기 백업에 포함될 수 있습니다.</td></tr>
+  <tr><td>이용 통계</td><td>앱 인스턴스 식별자 등 기기·앱 식별자, 기기 모델·운영체제·언어, IP 주소로 추정한 대략적 지역, 앱 실행·세션·업데이트·구매 발생 같은 자동 기록, 【직접 기록하는 이벤트: 예) 단계 시작·종료, 광고 시청 완료】</td><td>난이도와 오류 개선</td><td>Google (Firebase Analytics)</td></tr>
+  <tr><td>광고</td><td>기기 식별자, IP 주소와 그로부터 추정한 대략적 위치, 광고 노출·시청 기록, 진단·성능 정보</td><td>보상형 광고 제공, 부정 이용 방지</td><td>Google (AdMob)</td></tr>
+  <tr><td>결제 기능 통계</td><td>설치 식별자, 세션 식별자, iOS의 앱 공급자 식별자(IDFV), 기기 모델·운영체제·언어, 구매를 시도한 상품과 진행 단계</td><td>결제 기능의 안정성 확인</td><td>Unity Technologies (결제 라이브러리)</td></tr>
+  <tr><td>결제</td><td>결제 수단과 결제 정보</td><td>인앱 상품 구매</td><td>Apple App Store 또는 Google Play (운영자는 받지 않음)</td></tr>
+</table></div>
+<p>이용 통계와 결제 기능 통계에는 닉네임이나 게임 저장 내용이 포함되지 않습니다.</p>
+
+<h2>3. 어린이 보호</h2>
+<ul>
+  <li>앱은 어린이를 대상으로 하며, 광고 요청에 "아동 대상" 표시와 전체 이용가 등급을 적용합니다. 관심사 기반 맞춤형 광고는 제공하지 않습니다.</li>
+  <li>iOS에서는 광고 추적 허용을 요청하지 않으며 광고 식별자(IDFA)를 사용하지 않습니다.</li>
+  <li>【광고가 나오는 조건: 예) 광고는 사용자가 "광고보기"를 직접 눌렀을 때만 재생됩니다.】 재생 중인 광고를 누르면 앱 마켓이나 웹 페이지가 열릴 수 있으니 보호자의 지도를 권합니다.</li>
+  <li>【보호자 확인이 걸린 기능: 예) 구매, 구매 복원, 이 방침 페이지 열기는 보호자 확인을 통과해야 실행됩니다.】</li>
+  <li>운영자는 만 14세 미만 아동의 개인정보를 직접 수집하지 않습니다. 아동의 정보가 처리되었다고 생각되면 아래 연락처로 알려 주세요. 확인 후 지체 없이 조치합니다.</li>
+</ul>
+
+<h2>4. 보유 및 파기</h2>
+<ul>
+  <li>기기 내 저장 정보는 앱을 삭제하면 함께 삭제됩니다. 【기기 안의 정보를 지우는 다른 방법이 있으면 적기】</li>
+  <li>이용 통계는 Google Analytics 보존 설정에 따라 최대 14개월 보관 후 자동으로 삭제됩니다.</li>
+  <li>광고와 결제 기능 통계는 Google과 Unity의 정책에 따라 보관됩니다.</li>
+  <li>운영자가 따로 보관하는 개인정보 파일이나 문서는 없습니다. 문의 과정에서 받은 이메일은 처리 완료 후 지체 없이 복구할 수 없는 방법으로 삭제합니다.</li>
+</ul>
+
+<h2>5. 처리 위탁, 제3자의 수집, 국외 이전</h2>
+<p>운영자는 개인정보를 판매하지 않습니다. 다만 앱에 포함된 아래 서비스가 2번 항목의 정보를 처리하며, 이 과정에서 정보가 국외로 이전됩니다.</p>
+<div class="scroll"><table>
+  <tr><th>받는 자</th><th>서비스와 목적</th><th>이전 항목</th><th>이전 국가</th><th>시기와 방법</th><th>보유 기간</th></tr>
+  <tr><td>Google LLC</td><td>Firebase Analytics (이용 통계 처리 위탁)</td><td>2번의 "이용 통계"</td><td>미국 등 Google 데이터센터 소재국</td><td>앱 실행과 이용 중 네트워크로 전송</td><td>최대 14개월</td></tr>
+  <tr><td>Google LLC</td><td>AdMob, 동의 관리 (광고 제공)</td><td>2번의 "광고"</td><td>미국 등</td><td>앱 실행 후 광고를 불러오고 재생할 때 전송</td><td>Google 정책에 따름</td></tr>
+  <tr><td>Unity Technologies</td><td>결제 라이브러리 (결제 기능 통계)</td><td>2번의 "결제 기능 통계"</td><td>미국 등</td><td>앱 실행 후 결제 기능을 준비할 때와 구매·복원할 때 전송</td><td>Unity 정책에 따름</td></tr>
+  <tr><td>Apple Inc. / Google LLC</td><td>앱 마켓 결제</td><td>결제 정보</td><td>미국 등</td><td>구매·복원 시 각 마켓이 직접 처리</td><td>각 마켓 정책에 따름</td></tr>
+</table></div>
+<p>각 회사의 방침과 문의처: <a href="https://policies.google.com/privacy">Google</a>, <a href="https://unity.com/legal/privacy-policy">Unity</a>, <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
+<p>국외 이전을 원하지 않으면 앱 이용을 중단하고 앱을 삭제할 수 있습니다. 이전을 거부하면서 광고 시청 보상이나 구매·구매 복원만 따로 이용할 수는 없습니다.</p>
+
+<h2>6. 자동 수집 장치와 거부 방법</h2>
+<p>앱은 쿠키를 사용하지 않지만 위 서비스가 기기 식별자를 자동으로 처리합니다. 기기 설정에서 광고 식별자를 재설정하거나 맞춤 광고를 끌 수 있습니다. 【동의 설정을 바꾸는 위치: 예) 일부 지역에서는 보호자 메뉴에 "광고 개인정보 설정"이 표시되며 그곳에서 동의를 바꿀 수 있습니다.】 앱을 삭제하면 이용 통계 식별자는 새로 만들어집니다.</p>
+
+<h2>7. 이용자와 법정대리인의 권리</h2>
+<p>이용자와 법정대리인은 언제든지 개인정보의 열람, 정정, 삭제, 처리 정지를 요청할 수 있으며, 아래 이메일로 요청하시면 됩니다. 운영자는 개인을 식별할 수 있는 정보를 보유하지 않으므로, 요청하실 때 기기와 설치 시기 등 확인에 필요한 내용을 알려 주시면 가능한 범위에서 조치하고 결과를 알려 드립니다.</p>
+
+<h2>8. 안전성 확보 조치</h2>
+<p>운영자는 개인정보를 자체 서버에 저장하지 않으며, 외부 전송은 암호화된 통신(HTTPS)으로만 이루어집니다. 스토어·분석·광고 관리 계정은 운영자만 접근합니다.</p>
+
+<h2>9. 개인정보 보호책임자</h2>
+<p>담당: 【운영자명】<br>이메일: 【연락처 이메일】</p>
+<p>개인정보 침해에 대한 상담이나 구제는 개인정보침해신고센터(privacy.kisa.or.kr, 국번 없이 118), 개인정보분쟁조정위원회(www.kopico.go.kr, 1833-6972), 대검찰청(국번 없이 1301), 경찰청(국번 없이 182)에서도 받을 수 있습니다.</p>
+
+<h2>10. 방침 변경</h2>
+<p>이 방침이 바뀌면 이 페이지에 시행일과 함께 게시합니다.</p>
+</main>
+</body>
+</html>

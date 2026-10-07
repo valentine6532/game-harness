@@ -1,0 +1,6 @@
+ref_head_front.png is the FINAL front view of this cat death knight's head-and-neck 3D-modeling reference. src.png is a crop of the same character from the left side (with body armor). Draw the matching LEFT SIDE profile view (the character's left side, nose pointing to image LEFT) of EXACTLY the head in ref_head_front.png, as a turnaround partner of it:
+- SAME scale and framing as ref_head_front.png: same image size, ear-tip height, crown height, eye line, chin height and neck-bottom height at exactly the same vertical positions as in ref_head_front.png; the neck ends with the same flat horizontal cut at the same height.
+- Same crown design (spike count and positions, bone-colored rim, dark iron band), same fur colors and tabby markings, same pale icy-blue eyes, same lynx ear tufts, same scars as the ref.
+- Orthographic, no perspective, exact left view. No body, no armor.
+- Clean surfaces: crown is smooth even blackened iron with thin worn edge highlights; no grime, blotches, stains or speckles. Flat uniform shadowless lighting (albedo-like). Plain perfectly flat light gray background #d0d0d0. No text. Square image, same resolution as ref_head_front.png.
+Save as ./out.png

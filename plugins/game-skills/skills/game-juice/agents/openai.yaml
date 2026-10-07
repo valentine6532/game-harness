@@ -1,0 +1,4 @@
+interface:
+  display_name: "게임 주스 점검"
+  short_description: "기존 게임의 손맛·피드백·연출 흐름과 중복 요소를 점검하고 개선"
+  default_prompt: "$game-juice 현재 게임의 주스를 점검하고, 표현이 부족한 사건과 과한 효과를 찾아 체감 효과가 큰 순서로 개선안을 정리해 줘."

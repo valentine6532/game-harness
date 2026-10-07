@@ -1,0 +1,67 @@
+{
+  "repository": "https://github.com/Unity-Technologies/skills",
+  "commit": "8d85172945197ee8bacbbfea44d6d64cad782004",
+  "installed_at_utc": "2026-09-18T10:12:12.608969+00:00",
+  "destination": "C:\\Users\\Admin\\.agents\\skills",
+  "skills": [
+    "2d-pixel-perfect",
+    "audio-setup-mixers",
+    "build-live-game",
+    "generate-editor-search-query",
+    "implement-in-app-purchases",
+    "initialize-ai-navigation",
+    "levelplay-unity-integration",
+    "localization",
+    "manage-sprite-atlas",
+    "migrate-birp-to-urp",
+    "new-unity-project",
+    "optimize-audio",
+    "optimize-text-mesh-pro",
+    "optimize-web",
+    "physics-3d-collision",
+    "setup-multiplayer-services",
+    "setup-vivox-voice-chat",
+    "shader-graph-create-custom-node",
+    "sprite-editor",
+    "sprite-segment-3x3grid",
+    "tilemap-palette-create",
+    "tilemap-ruletile-createempty",
+    "tilemap-ruletile-createfromsegment",
+    "ui",
+    "ui-imgui",
+    "ui-ugui",
+    "ui-uitk",
+    "unity-cli",
+    "unity-package-management",
+    "urp-postprocessing",
+    "validate-urp-render-graph-renderer-feature"
+  ],
+  "verified_files": 192,
+  "verification": "All 192 files matched upstream before normalization. Quoted YAML descriptions in 4 SKILL.md files without changing their instruction bodies. All 31 skill metadata blocks parse, have name/description, and have unique names.",
+  "local_compatibility_fixes": [
+    {
+      "skill": "physics-3d-collision",
+      "change": "Quoted the existing single-line YAML description; instruction body unchanged.",
+      "upstream_sha256": "db2aaf249d3f749958ab52fff9e2e86b02a598a1036e128530c57cad146c0034",
+      "installed_sha256": "8b226db8dc9cac80cca6c99ebfc1f4904ef584393f55e0b9fbb0963f2c2edf09"
+    },
+    {
+      "skill": "tilemap-ruletile-createfromsegment",
+      "change": "Quoted the existing single-line YAML description; instruction body unchanged.",
+      "upstream_sha256": "d92af12840c39c704bebe1fe012680bc4f7bdbc2ef9d8289f047dc38b7519cf2",
+      "installed_sha256": "b5784c45b60651e2ca994f37e221843e39116ec43a167792a056bc4e1f9c5005"
+    },
+    {
+      "skill": "ui",
+      "change": "Quoted the existing single-line YAML description; instruction body unchanged.",
+      "upstream_sha256": "23474261e203d2c20b13426b6fc6bbf115cc2e43f4f3ffab9ae4d937dbaeb453",
+      "installed_sha256": "ab63f9a0c436c36ac10ab0d759df0e991152cd068f5dbbca4eda63f45fe8c181"
+    },
+    {
+      "skill": "ui-imgui",
+      "change": "Quoted the existing single-line YAML description; instruction body unchanged.",
+      "upstream_sha256": "16deb9ddfd072699b465000cc090ee24a75388168150073368fb9bb819f15300",
+      "installed_sha256": "888dda8fed93e2e8bc25858dd3ff3f7f03f521ca6dd817c43c49e97a8a592845"
+    }
+  ]
+}

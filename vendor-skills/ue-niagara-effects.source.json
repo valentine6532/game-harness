@@ -1,0 +1,13 @@
+{
+ "source": "https://github.com/quodsoler/unreal-engine-skills/tree/f3742d7b688690810df369802b90430324e380b9/skills/ue-niagara-effects",
+ "commit": "f3742d7b688690810df369802b90430324e380b9",
+ "license": "MIT",
+ "installed": "2026-09-29",
+ "method": "manual copy of audited files (no skills CLI, no telemetry, no auto-update)",
+ "audit": "full read of all 3 files + scan for hidden unicode, injection phrases, shell/install/network/secret patterns: none found",
+ "sha256": {
+  "SKILL.md": "e42ef34b9fd1a29be4b0326d9a4878143585cfbc2b902ad98deee70751888b2d",
+  "references/niagara-data-interfaces.md": "22949681b5ed59ee606bd62882a3c5e05aa4b14731247c929fbbf7b0eddbb1e9",
+  "references/niagara-parameter-types.md": "eaed3449031a6dc34774480f5e841d66330f6fde202948fcdb44f81698743227"
+ }
+}

@@ -1,0 +1,18 @@
+Use the image_gen tool in EDIT mode on image 1. Image 1 is a TEMPLATE sheet (1024x1536, transparent background) with 8 flat grey silhouettes. Image 2 is the character, a fully clothed fantasy mage (design reference).
+
+TASK: paint each grey silhouette as the named limb segment of the character in image 2, like colouring inside the lines of a colouring book.
+- The painted part must have EXACTLY the outline of its grey silhouette: same length, same width at every height, same rounded ends. Nothing outside the silhouette, no grey left inside. Do not move, resize or reshape the silhouettes.
+- The silhouettes already carry the anatomy (thigh taper, knee, calf bulge at the back of the lower leg, forearm taper to the wrist). Paint that anatomy inside them with soft form shading: kneecap, calf muscle, shin line, elbow, wrist bone. Not a flat tube.
+- Each part hangs straight down; its upper end is the joint nearer the body. Seen from the front in the same 3/4 view as image 2.
+- Same detailed anime illustration rendering as image 2 (fine line art, soft gradient shading, warm skin tone, satin highlights), light from the upper left, consistent across all 8 parts.
+- The rounded ends belong to the limb (they will sit under the neighbouring part): shade them like the limb, no cut faces, no hollow openings.
+- Keep the background fully transparent. No labels, no shadows, no other objects.
+
+PARTS (columns from left to right; in each column the top shape, then the bottom shape):
+Column 1, staff arm: top = upper arm: skin in the upper two thirds; the white satin opera glove begins just above the elbow in the lower third, with the gold lace trim along the glove's top edge, as in image 2. Bottom = forearm: white satin glove with the gold filigree cuff ornament at its lower end (the wrist).
+Column 2, free arm: top = upper arm: skin, with the white glove top and its gold lace trim near the lower end. Bottom = forearm: plain white satin glove.
+Column 3, front leg: top = thigh: skin tone, with the gold chain ornament and star pendant around it about one third from the top, as in image 2; the knee at the lower end. Bottom = lower leg from knee to ankle: skin tone, with the gold ankle chain and star pendants at the lower end.
+Column 4, back leg: top = thigh: plain skin tone, the knee at the lower end. Bottom = lower leg with its gold ankle chain at the lower end.
+
+After generating, copy the final PNG to: D:/HarnessPrograming/asset-maker/workspace/2d_animation_test/references/3_parts/v012/gen/T2a-limbs.png
+Do not modify any other file. Reply with the saved path.

@@ -1,0 +1,7 @@
+Redraw the attached src.png as a high-resolution 3D-modeling reference of ONLY the character's RIGHT ARM (the arm on the image-left side of src.png) of this cat death knight - an isolated single arm, FRONT view (as seen from the front of the character).
+- Arm hanging STRAIGHT DOWN, perfectly vertical, relaxed, elbow very slightly bent, centered in the image, filling about 88% of the image height. Orthographic, no perspective.
+- Top of the arm: the upper arm starts just below the shoulder joint and ends with a clean flat horizontal cut (the big skull pauldron is NOT included - it belongs to the torso). Under where the pauldron was, show the upper arm as dark chainmail sleeve over black fur, with the top edge of the upper-arm plate (rerebrace) below it.
+- Keep the same armor design as src.png: segmented blackened-iron upper-arm plates, spiked elbow cop, long spiked vambrace with the bone skull ornament and frost-blue rune lines, brown leather straps with iron buckles, plated gauntlet.
+- The hand is a closed FIST with a clear round through-hole for a sword grip (the hole runs front-to-back, you can see through it), exactly like src.png. No weapon.
+- Clean surfaces: smooth even blackened iron with thin worn edge highlights, smooth even brown leather, clean regular chainmail; no grime, blotches, stains or speckles. Flat uniform shadowless lighting (albedo-like). Plain perfectly flat light gray background #d0d0d0. No text. Portrait image (2:3).
+Save as ./out.png

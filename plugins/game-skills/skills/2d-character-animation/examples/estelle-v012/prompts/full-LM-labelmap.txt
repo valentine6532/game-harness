@@ -1,0 +1,31 @@
+Use the image_gen tool in EDIT mode on image 1 (a character illustration, 1024x1536, transparent background).
+
+TASK: make a SEGMENTATION MAP of image 1 for a 2D animation rig: repaint every visible pixel of the character with the FLAT colour of the part that is visible there (the front-most layer). Keep the exact same canvas, position, size and outline; the background stays fully transparent. No shading, no lines, no texture, no text: only flat colour regions with clean edges. Where a sheer or semi-transparent fabric lies over something else, the pixel belongs to the sheer fabric on top.
+
+PARTS and their colours:
+- head: face, fringe, braided crown hair, horns, hair ornaments, earrings = RED (255,0,0)
+- long back hair (all the long wavy blonde hair behind the body and on both sides) = ORANGE (255,140,0)
+- front hair lock that falls in front of the left shoulder and chest (image left) = YELLOW (255,255,0)
+- neck and navy choker collar with its pendant = PINK (255,105,180)
+- upper body: shoulders, chest skin, ivory corset with its gold trim and brooch, and the thin navy halter straps from the choker to the corset = LIGHT GREEN (144,238,144)
+- bunched navy shawl around the image-left upper arm (sleeve) = DARK GREEN (0,100,0)
+- bunched navy shawl over the image-right (staff) shoulder and upper arm, down to where it becomes the hanging panel = TEAL (0,128,128)
+- long hanging navy shawl panel on the image left (from the arm to the floor) = NAVY (0,0,128)
+- long hanging navy shawl panel on the image right (behind the staff) = PURPLE (128,0,128)
+- white opera glove on the image-left arm (the part below the sleeve, down to the wrist) = CYAN (0,255,255)
+- image-left hand = LIGHT BLUE (135,206,250)
+- white glove forearm of the staff arm = MAGENTA (255,0,255)
+- staff-arm fist gripping the staff = BROWN (139,69,19)
+- the staff (armillary sphere, shaft, pommel, charms) = GOLD (255,215,0)
+- lighter blue draped swag at the front of the waist with its gold waist chain = SKY (0,191,255)
+- the long dark navy front skirt panel with gold stars that hangs from the waist to the floor (left of the leg slit) = DARK BLUE (0,0,255)
+- white sheer chiffon skirt layers on the image LEFT of the leg slit, including the ruffled floor hem on the left = WHITE-GREY (200,200,200)
+- white sheer chiffon skirt layer on the image RIGHT of the leg slit = SILVER (120,120,120)
+- gold crescent-moon waist pendant = OLIVE (128,128,0)
+- front leg (image right, seen through the slit), thigh and shin with its gold chains = SALMON (250,128,114)
+- back leg (image left) skin = TAN (210,180,140)
+- front shoe = BLACK (20,20,20)
+- back shoe = DARK GREY (70,70,70)
+
+After generating, copy the final PNG to: D:/HarnessPrograming/asset-maker/workspace/2d_animation_test/references/3_parts/v012/labelmap/codex-labelmap.png
+Do not modify any other file. Reply with the saved path.

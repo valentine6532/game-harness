@@ -1,0 +1,4 @@
+interface:
+  display_name: "게임 캐릭터 3D 제작"
+  short_description: "품질 단계(A 주인공·보스 / B 정예·NPC / C 몹·소품) 선택 → 설정화 → Tripo 생성 → Blender·리깅·동작 → Unreal 검증"
+  default_prompt: "$game-character-3d 이 설정화로 게임 에셋을 만들어 줘. 먼저 품질 단계(A/B/C)를 물어보고, setup·pitfalls·backlog를 읽고, Tripo 크레딧 상한을 확인한 뒤 단계에 맞는 공정만 진행하고 게임 화면으로 검증해 줘."

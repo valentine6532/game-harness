@@ -1,0 +1,24 @@
+{
+ "reference": "reference.png",
+ "labels": "labelmap/owner.npy",
+ "label_names": "labelmap/labels.json",
+ "label_of": {"ThighR": "LegR", "ShinR": "LegR", "ThighL": "LegL", "ShinL": "LegL", "FootR": "ShoeR",
+              "FootL": "ShoeL", "UpperArmL": "GloveL", "ForearmL": "GloveL", "HandR_back": "HandR", "HandR_front": "HandR"},
+ "rig": "rig.json", "anim": "anim.json", "parts": "parts",
+ "fps": 30,
+ "frames": [[1, 11], [1, 14], [1, 20], [0, 48]],
+ "unity": {
+  "frames": {"rest": "../../7_validation/v012-rest-closeup.png",
+             "atk11": "../../7_validation/v012-attack/frame-011.png",
+             "atk14": "../../7_validation/v012-attack/frame-014.png",
+             "atk20": "../../7_validation/v012-attack/frame-020.png",
+             "idle48": "../../7_validation/v012-idle/frame-048.png"},
+  "joins": [["../../7_validation/v012-idle/frame-095.png", "../../7_validation/v012-attack/frame-000.png",
+             "../../7_validation/v012-idle/frame-000.png", "../../7_validation/v012-idle/frame-001.png"],
+            ["../../7_validation/v012-attack/frame-038.png", "../../7_validation/v012-idle/frame-000.png",
+             "../../7_validation/v012-idle/frame-000.png", "../../7_validation/v012-idle/frame-001.png"]],
+  "camera": {"screen_w": 960, "screen_h": 1080, "ortho_size": 3.25, "cam_x": 3.15, "cam_y": 2.95,
+             "rig_x": 2.8, "ref_ppu": 256, "origin_x": 620, "ground_y": 1508}
+ },
+ "extra_regions": {"hand-grip": [700, 300, 900, 520], "shoulder-staff": [600, 280, 820, 560]}
+}

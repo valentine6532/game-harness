@@ -1,0 +1,15 @@
+Use the image_gen tool in EDIT mode on image 1. Image 1 is a TEMPLATE (1024x1536, transparent background) with flat grey masks. Image 2 is the character, a fully clothed fantasy mage; every grey mask sits exactly where that part is in image 2, at the same size.
+
+TASK: paint each grey mask as the named part of the character in image 2, like colouring inside the lines.
+- Fill every mask completely and stay inside it. No grey left, nothing outside the masks. Do not move or resize anything.
+- Where image 2 shows this part, copy it faithfully: same design, folds, pattern, colours, sheerness and shading, pixel for pixel in place.
+- Where the mask covers areas that belong to OTHER parts in image 2 (they will be drawn in front of this part), do NOT paint those other parts there: continue THIS part naturally behind them with the same fabric, skin or hair, pattern, trim and shading.
+- Same detailed anime illustration rendering as image 2. Keep the background fully transparent. No labels, no shadows, no other objects.
+
+PARTS:
+1. mask for LegL: the back leg (image left): the lower thigh, knee, shin and ankle with its gold ankle chain, exactly as in image 2; where the skirt covers it, the leg continues up as the thigh (slender, same skin shading).
+2. mask for ForearmR: the white satin gloved forearm of the staff arm, from the elbow (hidden under the navy shawl) to the wrist, with the gold filigree cuff at the wrist, exactly as in image 2.
+3. mask for GloveL: the white satin opera glove of the image-left arm, from its gold lace top edge above the elbow down to the wrist, exactly as in image 2; where the shawl covers it, it continues as the glove.
+
+After generating, copy the final PNG to: D:/HarnessPrograming/asset-maker/workspace/2d_animation_test/references/3_parts/v012/gen/P-v2-L1.png
+Do not modify any other file. Reply with the saved path.

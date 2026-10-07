@@ -1,0 +1,14 @@
+Use the image_gen tool in EDIT mode on image 1. Image 1 is a TEMPLATE (1024x1536, transparent background) with flat grey masks. Image 2 is the character, a fully clothed fantasy mage; every grey mask sits exactly where that part is in image 2, at the same size.
+
+TASK: paint each grey mask as the named part of the character in image 2, like colouring inside the lines.
+- Fill every mask completely and stay inside it. No grey left, nothing outside the masks. Do not move or resize anything.
+- Where image 2 shows this part, copy it faithfully: same design, folds, pattern, colours, sheerness and shading, pixel for pixel in place.
+- Where the mask covers areas that belong to OTHER parts in image 2 (they will be drawn in front of this part), do NOT paint those other parts there: continue THIS part naturally behind them with the same fabric, skin or hair, pattern, trim and shading.
+- Same detailed anime illustration rendering as image 2. Keep the background fully transparent. No labels, no shadows, no other objects.
+
+PARTS:
+1. mask for ChiffonL: the white sheer ruffled chiffon skirt layers on the image-left of the leg slit, including the ruffled floor hem, exactly as in image 2 (the navy that shows through the sheer chiffon in image 2 is painted as it looks).
+2. mask for FrontLockL: the long wavy blonde front hair lock that falls in front of the image-left shoulder and chest, exactly as in image 2.
+
+After generating, copy the final PNG to: D:/HarnessPrograming/asset-maker/workspace/2d_animation_test/references/3_parts/v012/gen/P-v2-S4.png
+Do not modify any other file. Reply with the saved path.

@@ -1,0 +1,11 @@
+Redraw the attached character (dk_design.png) as a clean 3D-modeling reference sheet. Keep the SAME character design exactly: the black-furred cat death knight with icy-blue eyes, spiked iron crown-helm with the ears through it, the same blackened spiked plate armor with skull pauldrons, skull emblem on the breastplate, frost-blue rune lines, chainmail, belts with the bone skull ornament, tattered dark crimson tabard, armored greaves, clawed armored feet, long black tail. Same colors and materials.
+Change ONLY the presentation:
+- straight FRONT orthographic view (no perspective, no 3/4 angle), the character faces the camera directly, head facing straight forward, body perfectly symmetric left/right.
+- symmetric A-pose: both arms straight down and out, about 35 degrees away from the torso, with clear empty space between arms and body; legs straight, feet shoulder-width apart, both feet pointing forward.
+- both hands closed into firm armored fists, each fist with an empty round hole through it as if gripping an invisible sword handle (nothing in the hands).
+- the tail hangs down to one side behind a leg, not covering the body.
+- the tabard hangs straight down, calm.
+- LIGHTING: completely flat, uniform, shadowless ambient light like an albedo / base-color texture: no cast shadows, no dark ambient-occlusion shading, no specular highlights, no rim light, no vignette, no glow bloom (runes and eyes are flat pale-blue color).
+- background: plain flat uniform light gray (#d0d0d0), no texture, no gradient, no floor, no shadow.
+- the whole body from the crown tips to the feet fully in frame with generous margin, centered. One character only, no text, no frame, no weapon.
+Save as ./dk_front.png

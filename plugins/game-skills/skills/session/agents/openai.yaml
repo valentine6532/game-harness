@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Session"
+  short_description: "현재 프로젝트의 진척, 막힘, 다음 작업을 근거로 요약"
+  default_prompt: "Use $session to summarize the current project state and recommend the next action."

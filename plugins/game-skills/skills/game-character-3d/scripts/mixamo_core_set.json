@@ -1,0 +1,548 @@
+{
+ "source": "Hugging Face dataset Linzhan/Mixamo-Animations-Characters",
+ "revision": "7f134bc734557b1d9516cb476d25ea1f577e45c1",
+ "license": "adobe-mixamo-terms (record as Mixamo terms, not CC0)",
+ "note": "Curated for a classic MMO slice with race roles: Human two-handed warrior, Dwarf sword-and-shield protector, Night Elf archer, Orc sword-and-shield warrior, Undead mage, Bull-folk healer. Preview each clip before use; names can be ambiguous. Download with download_mixamo.py by exact UUID.",
+ "clips": [
+  {
+   "group": "locomotion",
+   "name": "Sword And Shield Idle",
+   "motion_id": "c9cc6f74-b96c-11e4-a802-0aaa78deedf9",
+   "use": "default combat-ready idle"
+  },
+  {
+   "group": "locomotion",
+   "name": "Sword And Shield Look Around Idle",
+   "motion_id": "c9cc6546-b96c-11e4-a802-0aaa78deedf9",
+   "use": "idle variation"
+  },
+  {
+   "group": "locomotion",
+   "name": "Breathing Idle",
+   "motion_id": "c9c6d0d5-b96c-11e4-a802-0aaa78deedf9",
+   "use": "unarmed idle, character select stage"
+  },
+  {
+   "group": "locomotion",
+   "name": "Happy Idle (variation 1)",
+   "motion_id": "c9ccf37e-b96c-11e4-a802-0aaa78deedf9",
+   "use": "NPC and town idle"
+  },
+  {
+   "group": "locomotion",
+   "name": "Sword And Shield Walk",
+   "motion_id": "c9cc467a-b96c-11e4-a802-0aaa78deedf9",
+   "use": "walk"
+  },
+  {
+   "group": "locomotion",
+   "name": "Sword And Shield Backward Walk",
+   "motion_id": "c9cc4b25-b96c-11e4-a802-0aaa78deedf9",
+   "use": "backpedal"
+  },
+  {
+   "group": "locomotion",
+   "name": "Sword And Shield Run",
+   "motion_id": "c9cc4740-b96c-11e4-a802-0aaa78deedf9",
+   "use": "run"
+  },
+  {
+   "group": "locomotion",
+   "name": "Sword And Shield Backward Run",
+   "motion_id": "c9cc4f13-b96c-11e4-a802-0aaa78deedf9",
+   "use": "run backward"
+  },
+  {
+   "group": "locomotion",
+   "name": "Standard Run",
+   "motion_id": "c9ccc5dd-b96c-11e4-a802-0aaa78deedf9",
+   "use": "unarmed run, fake players"
+  },
+  {
+   "group": "locomotion",
+   "name": "Female Run Forward",
+   "motion_id": "c9ccfb22-b96c-11e4-a802-0aaa78deedf9",
+   "use": "female run option"
+  },
+  {
+   "group": "locomotion",
+   "name": "Walking Backward (Backward Walk)",
+   "motion_id": "c9ccc468-b96c-11e4-a802-0aaa78deedf9",
+   "use": "unarmed backpedal"
+  },
+  {
+   "group": "locomotion",
+   "name": "Left Strafe (running)",
+   "motion_id": "c9c96c6d-b96c-11e4-a802-0aaa78deedf9",
+   "use": "strafe left"
+  },
+  {
+   "group": "locomotion",
+   "name": "Right Strafe (running)",
+   "motion_id": "c9c97c58-b96c-11e4-a802-0aaa78deedf9",
+   "use": "strafe right"
+  },
+  {
+   "group": "locomotion",
+   "name": "Left Strafe Walk",
+   "motion_id": "c9c9829c-b96c-11e4-a802-0aaa78deedf9",
+   "use": "walk strafe left"
+  },
+  {
+   "group": "locomotion",
+   "name": "Right Strafe Walk",
+   "motion_id": "c9c985b7-b96c-11e4-a802-0aaa78deedf9",
+   "use": "walk strafe right"
+  },
+  {
+   "group": "locomotion",
+   "name": "Jumping In Place",
+   "motion_id": "c9c97399-b96c-11e4-a802-0aaa78deedf9",
+   "use": "jump (split into start/loop/land)"
+  },
+  {
+   "group": "locomotion",
+   "name": "Forward Running Jump",
+   "motion_id": "c9ccebcf-b96c-11e4-a802-0aaa78deedf9",
+   "use": "running jump"
+  },
+  {
+   "group": "locomotion",
+   "name": "Falling Idle (mid-air)",
+   "motion_id": "c9c991b1-b96c-11e4-a802-0aaa78deedf9",
+   "use": "fall loop"
+  },
+  {
+   "group": "melee",
+   "name": "Sword And Shield Cross Slash",
+   "motion_id": "c9cc5167-b96c-11e4-a802-0aaa78deedf9",
+   "use": "auto-attack A"
+  },
+  {
+   "group": "melee",
+   "name": "Sword And Shield Downward Slash",
+   "motion_id": "c9cc4fd7-b96c-11e4-a802-0aaa78deedf9",
+   "use": "auto-attack B"
+  },
+  {
+   "group": "melee",
+   "name": "Sword And Shield Power Slash",
+   "motion_id": "c9cc522d-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Heroic Strike"
+  },
+  {
+   "group": "melee",
+   "name": "Sword And Shield Slash Combo",
+   "motion_id": "c9cc50a3-b96c-11e4-a802-0aaa78deedf9",
+   "use": "combo / showcase"
+  },
+  {
+   "group": "melee",
+   "name": "Sword And Shield High Attack",
+   "motion_id": "c9cc63b7-b96c-11e4-a802-0aaa78deedf9",
+   "use": "attack variation"
+  },
+  {
+   "group": "melee",
+   "name": "One Handed Sword Combo",
+   "motion_id": "c9cdaeb2-b96c-11e4-a802-0aaa78deedf9",
+   "use": "attack variation"
+  },
+  {
+   "group": "melee",
+   "name": "Sword And Shield Block Idle",
+   "motion_id": "c9cc53c2-b96c-11e4-a802-0aaa78deedf9",
+   "use": "shield block"
+  },
+  {
+   "group": "melee",
+   "name": "Standing Taunt Battlecry",
+   "motion_id": "c9cee10b-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Battle Shout"
+  },
+  {
+   "group": "reaction",
+   "name": "Sword And Shield Unblocked Impact",
+   "motion_id": "c9cc5854-b96c-11e4-a802-0aaa78deedf9",
+   "use": "hit reaction"
+  },
+  {
+   "group": "reaction",
+   "name": "Hit Reaction (short)",
+   "motion_id": "c9c947d0-b96c-11e4-a802-0aaa78deedf9",
+   "use": "hit reaction, unarmed"
+  },
+  {
+   "group": "reaction",
+   "name": "Sword And Shield Falling Back Death",
+   "motion_id": "c9cc6aba-b96c-11e4-a802-0aaa78deedf9",
+   "use": "death"
+  },
+  {
+   "group": "reaction",
+   "name": "Death From Standing Idle",
+   "motion_id": "c9c899a0-b96c-11e4-a802-0aaa78deedf9",
+   "use": "death, unarmed and NPCs"
+  },
+  {
+   "group": "magic",
+   "name": "Standing 1H Magic Attack 01",
+   "motion_id": "a3d120fd-c26a-46c7-a4a0-59c1c5d8157c",
+   "use": "Fireball cast"
+  },
+  {
+   "group": "magic",
+   "name": "Standing 2H Magic Attack 01",
+   "motion_id": "d3a09098-c43e-49e7-85f3-fcc86760517a",
+   "use": "Frostbolt / two-hand cast"
+  },
+  {
+   "group": "magic",
+   "name": "Standing 2H Magic Area Attack 01",
+   "motion_id": "3a2c5c31-fe8a-4eb1-98c7-ad6cbb95b547",
+   "use": "Frost Nova / area spell"
+  },
+  {
+   "group": "magic",
+   "name": "Two Hand Spell Casting",
+   "motion_id": "c9c7ffde-b96c-11e4-a802-0aaa78deedf9",
+   "use": "channel loop"
+  },
+  {
+   "group": "magic",
+   "name": "Magic Spell Casting (one hand)",
+   "motion_id": "c9c802f0-b96c-11e4-a802-0aaa78deedf9",
+   "use": "long cast"
+  },
+  {
+   "group": "social",
+   "name": "Waving Gesture",
+   "motion_id": "c9cd99fc-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/wave"
+  },
+  {
+   "group": "social",
+   "name": "Silly Dancing (The Twist)",
+   "motion_id": "c9c65aac-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/dance A"
+  },
+  {
+   "group": "social",
+   "name": "Wave Hip Hop Dance (loop)",
+   "motion_id": "c9c73b62-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/dance B"
+  },
+  {
+   "group": "social",
+   "name": "Female Hip Hop Running Man",
+   "motion_id": "c9c66120-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/dance C"
+  },
+  {
+   "group": "social",
+   "name": "Male Cheering With Two Fists",
+   "motion_id": "c9c66dfd-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/cheer, level-up grats"
+  },
+  {
+   "group": "social",
+   "name": "Laughing Standing",
+   "motion_id": "c9c6ec22-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/laugh"
+  },
+  {
+   "group": "social",
+   "name": "Formal Military Salute",
+   "motion_id": "c9cb0ab6-b96c-11e4-a802-0aaa78deedf9",
+   "use": "guards /salute"
+  },
+  {
+   "group": "social",
+   "name": "Talking (General Conversation)",
+   "motion_id": "c9c88301-b96c-11e4-a802-0aaa78deedf9",
+   "use": "NPC talk loop"
+  },
+  {
+   "group": "social",
+   "name": "Talking (Asking A Question)",
+   "motion_id": "c9c6de72-b96c-11e4-a802-0aaa78deedf9",
+   "use": "quest giver gesture"
+  },
+  {
+   "group": "social",
+   "name": "Pointing With Arm Bent",
+   "motion_id": "c9c6947c-b96c-11e4-a802-0aaa78deedf9",
+   "use": "NPC giving directions"
+  },
+  {
+   "group": "social",
+   "name": "Stand To Sit",
+   "motion_id": "c9ccaece-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/sit start"
+  },
+  {
+   "group": "social",
+   "name": "Sitting On The Floor",
+   "motion_id": "c9ccd526-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/sit loop"
+  },
+  {
+   "group": "social",
+   "name": "Sit To Stand",
+   "motion_id": "c9ccabe2-b96c-11e4-a802-0aaa78deedf9",
+   "use": "/sit end"
+  },
+  {
+   "group": "social",
+   "name": "Sitting Still In A Chair",
+   "motion_id": "c9cb95c1-b96c-11e4-a802-0aaa78deedf9",
+   "use": "inn chairs"
+  },
+  {
+   "group": "social",
+   "name": "Male Drinking",
+   "motion_id": "c9c63255-b96c-11e4-a802-0aaa78deedf9",
+   "use": "inn, eat/drink"
+  },
+  {
+   "group": "social",
+   "name": "Kneeling Idle",
+   "motion_id": "c9cd9c47-b96c-11e4-a802-0aaa78deedf9",
+   "use": "looting / gathering"
+  },
+  {
+   "group": "creature",
+   "name": "Mutant Breathing Idle",
+   "motion_id": "c9c93f13-b96c-11e4-a802-0aaa78deedf9",
+   "use": "hunched humanoid mob idle"
+  },
+  {
+   "group": "creature",
+   "name": "Zombie Swipe Attack",
+   "motion_id": "c9cbd7ad-b96c-11e4-a802-0aaa78deedf9",
+   "use": "humanoid mob claw attack"
+  },
+  {
+   "group": "creature",
+   "name": "Mutant Dying",
+   "motion_id": "c9c93d98-b96c-11e4-a802-0aaa78deedf9",
+   "use": "humanoid mob death"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Idle",
+   "motion_id": "c9cc7140-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Human two-hander idle"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Walk",
+   "motion_id": "c9cc7257-b96c-11e4-a802-0aaa78deedf9",
+   "use": "walk"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Backward Walk",
+   "motion_id": "c9cc73a7-b96c-11e4-a802-0aaa78deedf9",
+   "use": "backpedal"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Run",
+   "motion_id": "c9cce2a9-b96c-11e4-a802-0aaa78deedf9",
+   "use": "run"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Backward Run",
+   "motion_id": "c9cc7906-b96c-11e4-a802-0aaa78deedf9",
+   "use": "run backward"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Strafe Left Run",
+   "motion_id": "c9cc7a8d-b96c-11e4-a802-0aaa78deedf9",
+   "use": "strafe left"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Strafe Right Run",
+   "motion_id": "c9cc7b4d-b96c-11e4-a802-0aaa78deedf9",
+   "use": "strafe right"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Jump",
+   "motion_id": "c9cc7cd9-b96c-11e4-a802-0aaa78deedf9",
+   "use": "jump"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Downward Slash",
+   "motion_id": "c9cc7d9c-b96c-11e4-a802-0aaa78deedf9",
+   "use": "auto-attack"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Power Slash",
+   "motion_id": "c9cc7fdc-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Mortal Strike style ability"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword High Spin Attack",
+   "motion_id": "c9cc8d52-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Whirlwind style ability"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Unblocked Impact",
+   "motion_id": "c9cc83b2-b96c-11e4-a802-0aaa78deedf9",
+   "use": "hit reaction"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Powering Up",
+   "motion_id": "c9cc9819-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Battle Shout"
+  },
+  {
+   "group": "great-sword",
+   "name": "Great Sword Blocking Idle",
+   "motion_id": "c9cc815e-b96c-11e4-a802-0aaa78deedf9",
+   "use": "parry stance"
+  },
+  {
+   "group": "shield",
+   "name": "Sword And Shield Powering Up",
+   "motion_id": "c9cc69f1-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Defensive stance / taunt"
+  },
+  {
+   "group": "shield",
+   "name": "Sword And Shield Sparta Kick",
+   "motion_id": "c9cc679e-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Shield Bash stand-in"
+  },
+  {
+   "group": "shield",
+   "name": "Sword And Shield Idle To Block",
+   "motion_id": "c9cc52f4-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Shield Block start"
+  },
+  {
+   "group": "shield",
+   "name": "Sword And Shield Blocked Impact",
+   "motion_id": "c9cc575e-b96c-11e4-a802-0aaa78deedf9",
+   "use": "blocked hit"
+  },
+  {
+   "group": "shield",
+   "name": "Sword And Shield Left Run Strafe",
+   "motion_id": "c9cc4cbd-b96c-11e4-a802-0aaa78deedf9",
+   "use": "strafe left"
+  },
+  {
+   "group": "shield",
+   "name": "Sword And Shield Right Run Strafe",
+   "motion_id": "c9cc4d87-b96c-11e4-a802-0aaa78deedf9",
+   "use": "strafe right"
+  },
+  {
+   "group": "shield",
+   "name": "Sword And Shield Jump From Idle",
+   "motion_id": "c9cc48d1-b96c-11e4-a802-0aaa78deedf9",
+   "use": "jump"
+  },
+  {
+   "group": "bow",
+   "name": "Standing Idle With Bow",
+   "motion_id": "c9ceb236-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Night Elf ranger idle"
+  },
+  {
+   "group": "bow",
+   "name": "Aiming Idle With Bow",
+   "motion_id": "123cd592-6ad3-4ecc-9199-d4179124fa01",
+   "use": "aim loop"
+  },
+  {
+   "group": "bow",
+   "name": "Running Forward With Bow",
+   "motion_id": "c9cec07a-b96c-11e4-a802-0aaa78deedf9",
+   "use": "run"
+  },
+  {
+   "group": "bow",
+   "name": "Running Backwards With Bow",
+   "motion_id": "c9cebfb0-b96c-11e4-a802-0aaa78deedf9",
+   "use": "run backward"
+  },
+  {
+   "group": "bow",
+   "name": "Running Left With Bow",
+   "motion_id": "c9cec217-b96c-11e4-a802-0aaa78deedf9",
+   "use": "strafe left"
+  },
+  {
+   "group": "bow",
+   "name": "Running Right With Bow",
+   "motion_id": "c9cec2da-b96c-11e4-a802-0aaa78deedf9",
+   "use": "strafe right"
+  },
+  {
+   "group": "bow",
+   "name": "Walking Forward While Aiming With Bow",
+   "motion_id": "c9cec780-b96c-11e4-a802-0aaa78deedf9",
+   "use": "aimed walk"
+  },
+  {
+   "group": "bow",
+   "name": "Reloading Bow (Standing Draw Arrow)",
+   "motion_id": "c9ceacc6-b96c-11e4-a802-0aaa78deedf9",
+   "use": "draw arrow"
+  },
+  {
+   "group": "bow",
+   "name": "Standing Aim Fire Arrow (Recoil)",
+   "motion_id": "c9cebedc-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Auto Shot release"
+  },
+  {
+   "group": "bow",
+   "name": "Charging Bow For Powershot",
+   "motion_id": "c9cebbb5-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Aimed Shot charge"
+  },
+  {
+   "group": "bow",
+   "name": "Shooting With Bow And Arrow",
+   "motion_id": "c9c76e97-b96c-11e4-a802-0aaa78deedf9",
+   "use": "full shot cycle"
+  },
+  {
+   "group": "bow",
+   "name": "Hit Reaction From The Front With Bow",
+   "motion_id": "314b7218-de23-4e70-a38d-d2dae4a65d41",
+   "use": "hit reaction"
+  },
+  {
+   "group": "bow",
+   "name": "Death Reaction Falling Backwards With Bow",
+   "motion_id": "c9ceae44-b96c-11e4-a802-0aaa78deedf9",
+   "use": "death"
+  },
+  {
+   "group": "bow",
+   "name": "Kick Attack With Bow",
+   "motion_id": "c9cebae7-b96c-11e4-a802-0aaa78deedf9",
+   "use": "melee fallback / knockback"
+  },
+  {
+   "group": "healer",
+   "name": "Magic Heal (one hand)",
+   "motion_id": "c9c80212-b96c-11e4-a802-0aaa78deedf9",
+   "use": "Healing Wave / heal cast"
+  }
+ ]
+}

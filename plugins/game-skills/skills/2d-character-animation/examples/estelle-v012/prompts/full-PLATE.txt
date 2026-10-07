@@ -1,0 +1,10 @@
+Use the image_gen tool in EDIT mode on image 1 (a character illustration, 1024x1536, transparent background).
+
+TASK: produce a CLEAN PLATE of the same illustration for a 2D animation rig: remove these objects completely and paint what would be visible behind them, keeping EVERYTHING ELSE pixel-identical (same canvas, position, size, colours, lines and background transparency):
+- remove the golden staff entirely (the armillary sphere, charms, the long dark shaft, the pommel and the spike at the floor);
+- remove the character's staff arm on the image-right side: the white gloved forearm, the gloved fist and the bunched navy shawl fabric wrapped around that upper arm.
+
+Behind them, continue naturally what is already there: the right side of the ivory corset and the bust contour, the long blonde back hair falling behind the right shoulder, the long navy shawl panel with gold trim hanging on the far right, the lighter blue waist drape, and the white sheer chiffon skirt with its ruffled hem. Use the same detailed anime rendering, clean ink outlines and shading as the rest of the image. Nothing new may extend outside the character's original outline except where the removed objects were. The background stays transparent.
+
+After generating, copy the final PNG to: D:/HarnessPrograming/asset-maker/workspace/2d_animation_test/references/3_parts/v012/plate/plate-a.png
+Do not modify any other file. Reply with the saved path.

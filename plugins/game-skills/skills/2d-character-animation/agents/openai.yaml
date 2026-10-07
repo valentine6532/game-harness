@@ -1,0 +1,4 @@
+interface:
+  display_name: "2D 캐릭터 스켈레탈 애니메이션"
+  short_description: "원화 한 장 → 부위 지도·틀 생성·클린 플레이트 → Unity 리그·애니메이션 → 독립 리뷰어 검수·자가 수정"
+  default_prompt: "$2d-character-animation 이 원화로 Unity 2D 스켈레탈 애니메이션을 만들어 줘. visibility-map 방식으로 부위를 만들고, 빌드마다 review-protocol대로 독립 리뷰어 검수와 수정을 반복해 줘."

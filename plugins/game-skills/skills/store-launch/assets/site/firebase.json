@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "public": "store-site",
+    "cleanUrls": true,
+    "ignore": ["**/.*"]
+  }
+}

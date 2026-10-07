@@ -1,0 +1,5 @@
+# Python 3.10+ for scripts/*.py
+numpy>=1.24
+opencv-python>=4.5      # SIFT (register), inpainting, connected components
+Pillow>=10
+imageio-ffmpeg>=0.4     # bundled ffmpeg for MP4 previews (or have ffmpeg on PATH)
