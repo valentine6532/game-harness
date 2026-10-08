@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""파일 수정 직전에 실행되는 훅. 작업 인계 규칙(handoff.md)을 코드로 지키게 한다.
+"""파일 수정 직전에 실행되는 훅. 전역 원본과 작업 인계 규칙을 보호한다.
 
 막는 경우:
 - 자신의 작업 파일 없이 프로젝트 파일을 고치려 할 때
@@ -7,8 +7,9 @@
 - 다른 세션이 진행 중인 작업 파일을 고치려 할 때
 - 다른 작업과 겹치는 `건드리는 곳`을 적으려 할 때
 
-하네스가 적용되지 않은 프로젝트에서는 아무것도 하지 않는다. 예상하지 못한 오류가 나면
-수정을 막지 않는다(종료 코드 2만 수정을 막는다).
+전역 원본 보호는 프로젝트 하네스 적용 여부와 관계없이 실행되며, 보호 확인 오류는 수정을 막는다.
+작업 인계 검사는 하네스가 적용된 프로젝트에서만 실행하며, 기존처럼 예상하지 못한 오류는
+수정을 막지 않는다. 종료 코드 2가 수정을 막는다.
 
 표준 입력으로 Claude Code 또는 Codex의 훅 JSON을 받는다.
 """
@@ -19,6 +20,8 @@ import os
 import re
 import sys
 from pathlib import Path
+
+from global_runtime import Runtime
 
 WORK = Path(".game-harness") / "work"
 ACTIVE = ("진행 중", "멈춤", "막힘")
@@ -109,13 +112,15 @@ def load_works(root: Path) -> list[Work]:
 
 def target_paths(data: dict) -> list[Path]:
     tool_input = data.get("tool_input") or {}
+    if isinstance(tool_input, str):
+        tool_input = {"input": tool_input}
     cwd = Path(data.get("cwd") or os.getcwd())
     raw = []
-    for key in ("file_path", "notebook_path"):
+    for key in ("file_path", "notebook_path", "path", "source", "destination"):
         if isinstance(tool_input.get(key), str):
             raw.append(tool_input[key])
-    if data.get("tool_name") == "apply_patch":
-        patch = tool_input.get("command") or tool_input.get("input") or ""
+    if str(data.get("tool_name", "")).split(".")[-1] == "apply_patch":
+        patch = tool_input.get("command") or tool_input.get("input") or tool_input.get("patch") or ""
         if isinstance(patch, list):
             patch = "\n".join(str(part) for part in patch)
         raw += [a or b for a, b in PATCH_FILE.findall(patch)]
@@ -209,6 +214,20 @@ def check_project_file(root: Path, path: Path, session: str, works: list[Work]) 
 
 
 def check(data: dict) -> None:
+    # Global protection applies even outside a harness project or without a session id.
+    runtime = Runtime()
+    for path in target_paths(data):
+        try:
+            label = runtime.protected(path)
+        except Exception as error:  # Protection failures must not permit an edit.
+            raise Deny(f"전역 보호 상태를 확인할 수 없다: {error}. 설치 상태를 확인하고 복구한다.") from error
+        if label:
+            raise Deny(
+                f"{path}는 game-harness가 관리하는 전역 원본({label})이다. 수정·삭제·이동하지 않는다.\n"
+                "프로젝트의 .game-harness/overrides/skills/<이름>/override.md 또는 "
+                ".game-harness/overrides/agents/<이름>/override.md에 변경사항을 적는다. "
+                "원본 교체는 플러그인의 global_runtime.py sync/repair 절차로만 한다."
+            )
     session = str(data.get("session_id") or "")
     if not session:
         return

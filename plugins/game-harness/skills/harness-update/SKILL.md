@@ -7,6 +7,8 @@ description: 게임 프로젝트에 복사해 둔 게임 하네스를 설치된 
 
 `.game-harness/harness/`를 플러그인에 들어 있는 버전으로 통째로 바꾼다. `project.yaml`, `overrides/`, `AGENTS.md`의 하네스 구역 밖, `docs/`는 바꾸지 않는다.
 
+전역 제작 스킬·에이전트는 플러그인 갱신 뒤 다음 세션의 훅이 자동 동기화한다. 이 프로젝트의 하네스 절차 업데이트와 별개다. 전역 상태는 `harness.py global-status`, 동기화는 `global-sync`, 같은 버전의 복구는 `global-repair`로 확인·처리한다. 전역 설치본은 직접 고치지 않으며, 프로젝트의 `overrides/skills/`와 `overrides/agents/`는 두 업데이트 모두에서 보존한다.
+
 ## 도구 위치
 
 관리 도구는 `${CLAUDE_PLUGIN_ROOT}/scripts/harness.py`다. 이 경로에 `${...}`가 글자 그대로 남아 있으면, 이 `SKILL.md`가 있는 폴더에서 `../../scripts/harness.py`를 찾아 쓴다.

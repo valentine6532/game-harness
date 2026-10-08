@@ -8,11 +8,13 @@ from __future__ import annotations
 import argparse
 import datetime
 import hashlib
+import importlib.util
 import json
 import re
 import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 PLUGIN_ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +28,13 @@ BLOCK_RE = re.compile(r"<!-- game-harness:begin.*?<!-- game-harness:end -->", re
 
 class HarnessError(Exception):
     pass
+
+
+def global_manager():
+    spec = importlib.util.spec_from_file_location("game_harness_global", PLUGIN_ROOT / "scripts" / "global_runtime.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 # ---------- 내용물(payload) ----------
@@ -353,6 +362,7 @@ def cmd_status(args) -> int:
     manifest = load_manifest(project)
     if manifest is None:
         result = {"applied": False, "availableVersion": plugin_version(),
+                  "globalCapabilities": global_manager().Runtime(plugin=PLUGIN_ROOT).integrity(),
                   "availableModules": available_modules()}
         if args.json:
             print(json.dumps(result, ensure_ascii=False, indent=2))
@@ -364,6 +374,7 @@ def cmd_status(args) -> int:
     diff = compute_diff(project, manifest, manifest["modules"])
     latest = published_version()
     result = {"applied": True, "modules": manifest["modules"], "appliedAt": manifest["appliedAt"],
+              "globalCapabilities": global_manager().Runtime(plugin=PLUGIN_ROOT).integrity(),
               "publishedVersion": latest, **diff}
     if args.json:
         print(json.dumps(result, ensure_ascii=False, indent=2))
@@ -438,6 +449,11 @@ def cmd_check(args) -> int:
                      "core/tools/with_lock.py"):
         if not (PAYLOAD / required).exists():
             problems.append(f"payload/{required}가 없다.")
+    try:
+        module = global_manager()
+        module.Runtime(home=Path(tempfile.gettempdir()) / "game-harness-check", plugin=PLUGIN_ROOT).desired()
+    except Exception as error:
+        problems.append(f"전역 제작 스킬·에이전트 묶음: {error}")
     if problems:
         print_list("문제", problems)
         return 1
@@ -456,6 +472,26 @@ def cmd_source(args) -> int:
 
 def modules_arg(value: str) -> list[str]:
     return sorted({m.strip() for m in value.split(",") if m.strip()})
+
+
+def cmd_global(args) -> int:
+    module = global_manager()
+    runtime = module.Runtime(plugin=PLUGIN_ROOT)
+    try:
+        if args.command == "global-sync":
+            result = runtime.sync()
+        elif args.command == "global-repair":
+            result = runtime.sync(repair=True)
+        elif args.command == "override":
+            result = runtime.prepare(args.kind, args.name, args.project)
+        else:
+            result = runtime.integrity()
+            result["availableVersion"] = plugin_version()
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return int(args.command == "global-status" and
+                   any(result[key] for key in ("missing", "modified", "untracked")))
+    except (OSError, ValueError, KeyError, module.RuntimeError) as error:
+        raise HarnessError(str(error)) from error
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -482,6 +518,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--yes", action="store_true", help="사용자 확인을 받은 뒤에만 붙인다")
     sub.add_parser("check", help="배포 전 점검").set_defaults(func=cmd_check)
     sub.add_parser("source", help="원본 저장소 경로를 출력한다").set_defaults(func=cmd_source)
+    for name in ("global-sync", "global-status", "global-repair"):
+        sub.add_parser(name, help="전역 제작 스킬·에이전트 설치·검사·복구").set_defaults(func=cmd_global)
+    p = project_command("override", cmd_global, "실행할 스킬·에이전트의 로컬 오버라이드를 준비한다")
+    p.add_argument("kind", choices=("skill", "agent"))
+    p.add_argument("name")
 
     args = parser.parse_args(argv)
     if hasattr(args, "project"):

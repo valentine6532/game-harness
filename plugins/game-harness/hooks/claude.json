@@ -1,15 +1,48 @@
 {
-  "description": "게임 하네스가 적용된 프로젝트에서 작업 인계 규칙을 지키게 한다. 적용되지 않은 프로젝트에서는 아무것도 하지 않는다.",
+  "description": "Sync and verify harness-owned global capabilities; protect originals and enforce project work ownership.",
   "hooks": {
-    "PreToolUse": [
+    "SessionStart": [
       {
-        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
         "hooks": [
           {
             "type": "command",
-            "command": "python",
-            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/work_guard.py"],
-            "timeout": 10
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/hook_entry.mjs",
+              "lifecycle"
+            ],
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/hook_entry.mjs",
+              "lifecycle"
+            ],
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit|apply_patch|Delete|Move",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/hook_entry.mjs",
+              "guard"
+            ],
+            "timeout": 30
           }
         ]
       }
@@ -19,9 +52,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python",
-            "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/work_guard.py"],
-            "timeout": 10
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/scripts/hook_entry.mjs",
+              "guard"
+            ],
+            "timeout": 30
           }
         ]
       }

@@ -1,14 +1,14 @@
 # game-harness
 
-여러 게임 프로젝트에서 같은 제작 절차를 쓰기 위한 공통 하네스다. Claude Code와 Codex용 플러그인 하나로 배포하며, 플러그인은 하네스를 게임 폴더에 복사해 설치하고 버전을 관리한다.
+여러 게임 프로젝트에서 같은 제작 절차를 쓰기 위한 공통 하네스다. `game-harness` 플러그인 하나가 프로젝트 하네스와 전역 제작 스킬 8개·검수 에이전트 1개를 관리한다. Claude Code와 Codex를 지원한다.
 
-게임 작업은 플러그인이 아니라 게임 폴더에 복사된 하네스를 보고 진행한다. 그래서 플러그인이 새 버전이 되어도, 업데이트를 요청하지 않은 게임은 기존 버전 그대로 동작한다.
+게임 폴더에 복사된 하네스 절차는 프로젝트별 업데이트를 요청할 때 갱신된다. 전역 제작 스킬·에이전트는 플러그인 버전을 따르며, 플러그인을 업데이트한 뒤 다음 세션 시작 때 함께 갱신된다. 각 게임의 로컬 오버라이드는 그대로 보존된다.
 
-같은 저장소에 플러그인이 하나 더 있다. `game-skills`는 직접 만든 제작 스킬을 여러 PC에서 같이 쓰기 위한 묶음이며 하네스와 따로 설치한다. 아래 [제작 스킬 묶음](#제작-스킬-묶음-game-skills)에 적었다.
+`game-skills`는 0.2.0부터 하네스에 통합됐다. 별도로 설치하지 않는다. Unity·Firebase·Unreal 공식 스킬 등 기존 외부 스킬은 이 플러그인의 관리 대상이 아니다.
 
 ## 필요한 것
 
-- Python 3.9 이상 (`python` 명령으로 실행되어야 한다)
+- Python 3.10 이상과 Node.js. 훅은 Node 런처가 실제 Python을 찾아 실행한다. Windows Store 별칭은 건너뛰며, 필요하면 `GAME_HARNESS_PYTHON`에 Python 실행 파일 경로를 지정한다. 관리 명령 예제의 `python`도 실제 실행 파일로 바꿔 쓸 수 있다.
 - git (게임 프로젝트가 git 저장소여야 업데이트를 되돌릴 수 있다)
 
 ## 설치
@@ -20,7 +20,15 @@ claude plugin marketplace add valentine6532/game-harness
 claude plugin install game-harness@game-harness
 ```
 
-Codex용 설정(`plugins/game-harness/plugin.json`, `.agents/plugins/marketplace.json`)도 들어 있지만 실제 설치는 아직 시험하지 않았다.
+Codex용 설정(`plugins/game-harness/plugin.json`, `.agents/plugins/marketplace.json`)도 들어 있다. 플러그인 훅을 사용할 수 있고 신뢰된 환경에서 다음 세션의 `SessionStart`가 전역 동기화를 실행한다. 실제 Codex 설치·훅 로딩은 아직 실세션에서 검증하지 않았다.
+
+전역 설치를 먼저 준비하거나 훅을 사용할 수 없으면 원본 저장소 또는 설치된 플러그인에서 한 번 실행한다.
+
+```text
+python plugins/game-harness/scripts/harness.py global-sync
+```
+
+새 스킬·에이전트 등록이 현재 세션의 목록에 보이지 않으면 세션을 다시 열거나 도구의 새로고침을 사용한다. 기존 `game-skills` 플러그인을 설치했다면 중복 실행을 피하도록 해당 플러그인만 제거하고 `game-harness`를 사용한다. 같은 이름의 비관리 전역 파일이 이미 있으면 동기화가 중단되고 충돌 경로가 표시된다. 기존 파일을 임의로 덮어쓰거나 삭제하지 않는다.
 
 ## 사용
 
@@ -141,14 +149,9 @@ python harness.py source
 
 `update`는 `--yes`가 없으면 차이만 출력하고 아무것도 바꾸지 않는다. `apply`는 이미 적용된 프로젝트에서는 아무것도 바꾸지 않는다.
 
-## 제작 스킬 묶음 (game-skills)
+## 전역 제작 스킬과 에이전트
 
-직접 만든 전역 스킬을 담은 플러그인이다. 하네스와 달리 게임 폴더에 복사하지 않고 플러그인에서 바로 쓴다.
-
-```
-claude plugin marketplace add valentine6532/game-harness
-claude plugin install game-skills@game-harness
-```
+제작 스킬 원본은 `plugins/game-harness/bundled/skills/`에 들어 있다. 하네스가 전역에 설치하며, 관리 스킬 5개는 플러그인에서 제공한다.
 
 | 스킬 | 하는 일 |
 | --- | --- |
@@ -161,18 +164,62 @@ claude plugin install game-skills@game-harness
 | `d2b2-reference` | 디아블로 II 레저렉션 아이템 자료 검색 |
 | `blender-motion-state-inspection` | Blender에서 자세·접지·방향 검사. 직접 만든 것이 아니라 ECC에서 가져온 것이다 |
 
-Claude Code에서는 `/game-skills:session`처럼 플러그인 이름이 앞에 붙는다.
+### 전역에 설치되는 위치
 
-새 PC에서 한 번씩 할 일:
+| 위치 | 내용 |
+| --- | --- |
+| `~/.agents/skills/<이름>/` | 공용 제작 스킬 본문·자료·도구 |
+| `~/.agents/game-harness/` | 관리 도구, 설치 목록·버전·파일 해시, 에이전트 원본 |
+| `~/.claude/skills/<이름>/SKILL.md` | 공용 원본을 읽는 Claude 발견용 입구 |
+| `~/.claude/agents/<이름>.md` | Claude 검수 에이전트 |
+| `~/.codex/agents/<이름>.toml` | Codex 검수 에이전트. `CODEX_HOME`을 지정하면 그 경로 사용 |
 
-- `skills/game-character-3d/config.env`의 Blender, Tripo, Unreal 경로를 그 PC에 맞게 고친다. `references/setup.md`에 설치 순서가 있다.
-- `python plugins/game-skills/skills/d2b2-reference/scripts/sync.py`를 실행해 아이템 자료를 받는다. 자료(약 23MB)는 저장소에 넣지 않았고 `~/.agents/reference-data/d2b2`에 저장된다.
-- 이 플러그인을 쓰는 PC에는 같은 이름의 스킬을 `~/.claude/skills`에 따로 두지 않는다. 두면 같은 스킬이 두 번 보인다.
-- Codex에서 플러그인 설치가 되지 않으면 스킬 폴더를 직접 연결한다. 스킬마다 `~/.agents/skills/<이름>`을 저장소의 `plugins/game-skills/skills/<이름>`으로 향하는 정션으로 만든다.
+Orca 전용 경로는 사용하지 않는다. Claude에서 제작 스킬은 `/session`, 관리 스킬은 `/game-harness:harness-status`처럼 호출한다. 모델·사고 수준·OS 권한은 변경하지 않는다.
 
-직접 만들지 않은 전역 스킬(Unity·Firebase·Unreal 공식 스킬 등)은 담지 않았다. 어디서 어느 버전을 받았는지는 `vendor-skills/README.md`에 있다.
+### 프로젝트별 오버라이드
 
-스킬을 고칠 때는 `plugins/game-skills/skills/` 안을 고치고 `plugin.json`과 `.claude-plugin/plugin.json`의 버전을 함께 올린다. `skills/2d-character-animation/reviewer/2d-rig-reviewer.md`를 고치면 `agents/2d-rig-reviewer.md`에도 똑같이 반영한다. 시험이 두 파일이 같은지 확인한다.
+스킬·에이전트의 시작 절차가 다음 명령으로 현재 프로젝트의 변경사항을 읽는다.
+
+```text
+python ~/.agents/game-harness/global_runtime.py prepare skill game-juice --project <게임 폴더 또는 하위 폴더>
+python ~/.agents/game-harness/global_runtime.py prepare agent 2d-rig-reviewer --project <게임 폴더 또는 하위 폴더>
+```
+
+프로젝트 루트는 가장 가까운 `.game-harness/`가 있는 폴더, Git 저장소 루트, 전달한 작업 폴더 순서로 찾는다. 사용자가 의도한 프로젝트 경로를 전달한다. 원본 저장소 자체에서 스킬을 실행하면 그 저장소가 프로젝트가 된다.
+
+```text
+내게임/.game-harness/overrides/
+├─ skills/game-juice/override.md
+└─ agents/2d-rig-reviewer/override.md
+```
+
+- 실제로 실행한 항목의 파일만 없을 때 생성한다. 기본 지침을 복사하지 않고 빈 템플릿을 만든다.
+- 사용자 요청을 우선하고, 로컬에서 명시한 항목만 바꾸며 나머지는 전역 기본 지침을 따른다.
+- Markdown은 지침 변경용이며 실행 코드를 자동으로 바꾸지 않는다. 오버라이드가 비어 있으면 기본 동작을 유지한다.
+- 에이전트를 호출할 때 프로젝트의 절대 경로와 적용한 오버라이드 경로를 전달한다. 에이전트도 자신의 템플릿을 준비한다.
+- 전역 업데이트는 오버라이드를 변경하지 않는다. 활성 오버라이드의 기준 본문이 바뀌면 검토 안내가 나오고, 삭제된 항목의 오버라이드도 보존·보고한다. 검토 후 파일의 `game-harness-base` 주석을 prepare 결과의 `version`·`baseHash`로 갱신하면 된다.
+- 버전 고정이나 의미상의 충돌을 자동 판정하는 기능은 없다. 변경 안내를 보고 프로젝트 예외를 검토한다.
+
+### 전역 원본 보호와 업데이트
+
+`SessionStart` 훅은 플러그인의 원본과 전역 설치 기록을 비교하고 추가·변경·삭제를 반영한다. 같은 버전의 내용 변경도 파일 해시로 감지한다. 전역 누락·수정·추가 파일은 보고하고 배포 원본으로 복구한다. 바꿀 파일을 먼저 준비하고 교체하며, 처리 중 오류가 나면 이전 파일과 설치 기록으로 되돌린다. 실패하거나 중단된 동기화의 `sync.lock`은 상태를 확인한 뒤 수동으로 정리한다.
+
+```text
+python plugins/game-harness/scripts/harness.py global-status
+python plugins/game-harness/scripts/harness.py global-sync
+python plugins/game-harness/scripts/harness.py global-repair
+```
+
+- 하네스가 설치 목록에 기록한 대상만 갱신한다. Unity 공식 스킬 등 다른 전역 스킬은 건드리지 않는다.
+- 파일 수정·삭제·이동 도구와 `apply_patch`는 전역 스킬·에이전트·관리 설정을 변경할 수 없다. 연결 경로와 상위 폴더 삭제도 검사한다.
+- 보호 오류는 차단하고 원인을 알린다. 전역 갱신은 관리 도구의 sync/repair로 한다. 훅을 끄거나 셸 명령으로 직접 파일을 바꾸는 행위까지 강제 차단하지는 않는다. OS 권한 설정은 하지 않는다.
+- 설치된 플러그인 사본도 보호한다. 공통 원본을 개발하는 Git 체크아웃은 수정할 수 있다.
+- `global-repair`는 설치 버전과 같은 원본으로 복구한다. 원본 버전이 바뀌었다면 `global-sync`를 사용한다.
+- 최초 설치의 비관리 파일과의 충돌, 연결된 설치 경로, 손상된 관리 기록은 자동 덮어쓰기 없이 중단한다. 복구 전에 기존 파일과 관리 기록을 확인한다.
+
+3D 도구 경로는 환경 변수 또는 프로젝트의 `overrides/skills/game-character-3d/config.env`에 둔다. 설치본 `config.env`와 전역 실험 기록은 수정하지 않는다. D2B2 자료는 `~/.agents/reference-data/d2b2`에 별도로 보관하고 필요할 때 해당 스킬의 sync.py를 실행한다.
+
+제작 스킬의 공통 개선은 `plugins/game-harness/bundled/`에서 작업하고 하네스 버전을 올린다. 검수 에이전트 원본과 `skills/2d-character-animation/reviewer/2d-rig-reviewer.md`는 같은 내용을 유지한다.
 
 ## 저장소 구조
 
@@ -187,16 +234,16 @@ game-harness/
 │  ├─ hooks/                          훅 설정 (claude.json, codex.json)
 │  ├─ scripts/harness.py              관리 도구
 │  ├─ scripts/work_guard.py           파일 수정 직전에 실행되는 훅
-│  └─ payload/                        게임 폴더로 복사될 내용
-│     ├─ CHANGELOG.md
-│     ├─ core/
-│     ├─ modules/
-│     └─ templates/
-├─ plugins/game-skills/
-│  ├─ .claude-plugin/plugin.json      Claude Code용 설정
-│  ├─ plugin.json                     Codex용 설정
-│  ├─ skills/                         제작 스킬 8개
-│  └─ agents/2d-rig-reviewer.md       2D 리그 검수 에이전트 (스킬 안 reviewer/와 같은 파일)
+│  ├─ payload/                        게임 폴더로 복사될 내용
+│  │  ├─ CHANGELOG.md
+│  │  ├─ core/
+│  │  ├─ modules/
+│  │  └─ templates/
+│  ├─ bundled/
+│  │  ├─ skills/                    제작 스킬 8개 원본
+│  │  └─ agents/2d-rig-reviewer.md  검수 에이전트 원본
+│  ├─ scripts/global_runtime.py     전역 동기화·검사·복구·오버라이드 준비
+│  └─ scripts/hook_entry.mjs        Python 선택과 훅 실행
 ├─ vendor-skills/                     다시 설치하는 전역 스킬의 출처와 버전 기록
 └─ tests/
 ```
@@ -225,6 +272,6 @@ game-harness/
 - Codex에서의 훅 동작 (`hooks/codex.json`은 문서 기준으로 작성했다. Claude Code에서는 실제 세션으로 확인했다)
 - 세션을 다시 열어 이어갈 때(resume)와 서브에이전트가 파일을 고칠 때 훅이 같은 세션으로 인식하는지
 - GitHub 저장소를 통한 Claude Code 설치
-- `game-skills` 플러그인을 설치한 실제 세션에서 스킬과 `2d-rig-reviewer` 에이전트를 써 보는 것 (플러그인을 폴더에서 불러와 스킬 8개와 에이전트 1개가 인식되는 것까지만 확인했다)
+- 플러그인 업데이트 후 실제 Claude/Codex 세션에서 SessionStart 동기화, 제작 스킬 자동 발견, 검수 에이전트 호출까지 이어지는 전체 흐름. 임시 홈·프로젝트에서 설치/보호/복구/오버라이드와 Node 훅 실행은 자동 시험했다.
 - Windows 외의 환경
 - 내용물이 Unity 퍼즐 게임 하나의 경험에서 나왔으므로, 다른 종류의 게임에서도 맞는지

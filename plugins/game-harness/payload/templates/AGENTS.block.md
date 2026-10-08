@@ -10,4 +10,6 @@
 - `.game-harness/project.yaml`: 이 게임의 설정(작업 대상, 검증 실행 방법, 요청 없이는 하지 않는 작업).
 - `.game-harness/overrides/`: 이 게임만의 예외와 추가 검증. 공통 절차보다 우선한다.
 
+전역 제작 스킬·에이전트를 사용할 때는 각 시작 절차의 `global_runtime.py prepare`를 실행한다. 명령이 프로젝트 루트를 찾아 `overrides/skills/<이름>/override.md` 또는 `overrides/agents/<이름>/override.md`를 읽고, 없으면 빈 템플릿만 만든다. 명시된 변경만 적용하며 나머지는 전역 기본 지침을 따른다. 에이전트 호출 시 프로젝트의 절대 경로를 전달한다. 전역 설치본은 수정·삭제하지 않는다.
+
 `.game-harness/harness/` 안의 파일과 이 구역은 고치지 않는다. 업데이트할 때 덮어써진다.

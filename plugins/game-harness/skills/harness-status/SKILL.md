@@ -5,6 +5,8 @@ description: 게임 프로젝트에 적용된 게임 하네스의 버전, 고른
 
 # 하네스 상태 확인
 
+프로젝트 적용 상태와 함께 전역 제작 스킬·에이전트 상태도 `harness.py global-status`로 확인한다. 전역 원본의 누락·변경이 있으면 보고하고 `global-repair`를 사용한다. 플러그인 버전이 바뀐 경우에는 `global-sync`를 사용한다. 상태 조회는 로컬 오버라이드 템플릿을 생성하지 않는다.
+
 ## 도구 위치
 
 관리 도구는 `${CLAUDE_PLUGIN_ROOT}/scripts/harness.py`다. 이 경로에 `${...}`가 글자 그대로 남아 있으면, 이 `SKILL.md`가 있는 폴더에서 `../../scripts/harness.py`를 찾아 쓴다.
